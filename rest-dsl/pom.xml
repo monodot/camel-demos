@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.cleverbuilder.cameldemos</groupId>
+	<artifactId>rest-dsl</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>rest-dsl</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.10.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<camel.version>2.20.2</camel.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring-boot-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<!-- Add the restlet component, for serving simple REST services -->
+		<!-- We use the `-starter` version of the component in Spring Boot -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-restlet-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<!-- Add the ability to convert JSON to a plain old Java object (POJO) -->
+		<!-- We use the `-starter` version of the component in Spring Boot -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
