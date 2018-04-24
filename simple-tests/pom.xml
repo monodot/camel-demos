@@ -37,6 +37,11 @@
       <artifactId>camel-core</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jsonpath</artifactId>
+    </dependency>
+
     <!-- logging -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
