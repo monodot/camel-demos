@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos;
+package com.cleverbuilder.cameldemos.routing;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
@@ -7,7 +7,7 @@ import org.junit.Test;
 /**
  * Created by tdonohue on 13/02/2018.
  */
-public class XPathBeanTest extends CamelTestSupport {
+public class XPathFilterTest extends CamelTestSupport {
 
     protected String inputBody = "<person name='James' city='London'/>";
 

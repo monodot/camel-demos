@@ -20,6 +20,12 @@ public class SimpleCbr extends CamelTestSupport {
     @EndpointInject(uri = "mock:other")
     MockEndpoint mockOther;
 
+    @EndpointInject(uri = "mock:header-true")
+    MockEndpoint mockHeaderTrue;
+
+    @EndpointInject(uri = "mock:contains-true")
+    MockEndpoint mockContainsTrue;
+
     @Test
     public void testHelloWorld() throws InterruptedException {
         mockHelloWorld.expectedMessageCount(1);
@@ -38,6 +44,25 @@ public class SimpleCbr extends CamelTestSupport {
         assertMockEndpointsSatisfied(5L, TimeUnit.SECONDS);
     }
 
+    @Test
+    public void simpleHeader() throws InterruptedException {
+        mockHeaderTrue.expectedMessageCount(1);
+
+        template.sendBodyAndHeader("direct:endswith", "Hello, world!",
+                "EggType", "scrambled");
+
+        assertMockEndpointsSatisfied(5L, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void contains() throws InterruptedException {
+        mockContainsTrue.expectedMessageCount(1);
+
+        template.sendBody("direct:contains", "bacon and eggs");
+
+        assertMockEndpointsSatisfied(5L, TimeUnit.SECONDS);
+    }
+
     @Override
     protected RoutesBuilder createRouteBuilder() throws Exception {
         return new RouteBuilder() {
@@ -46,10 +71,23 @@ public class SimpleCbr extends CamelTestSupport {
                 from("file:directory/files/input")
                         .choice()
                             .when(simple("${body} == 'Hello, world!'"))
-//                            .when(body().isEqualTo("Hello, world!"))
                         .to("mock:helloworld")
                         .otherwise()
                             .to("mock:other");
+
+                from("direct:header")
+                        .choice()
+                            .when(simple("${header.EggType} == 'scrambled'"))
+                                .to("mock:header-true")
+                            .otherwise()
+                                .to("mock:header-false");
+
+                from("direct:contains")
+                        .choice()
+                            .when(simple("${body} contains 'eggs'"))
+                                .to("mock:contains-true")
+                            .otherwise()
+                                .to("mock:contains-false");
             }
         };
     }

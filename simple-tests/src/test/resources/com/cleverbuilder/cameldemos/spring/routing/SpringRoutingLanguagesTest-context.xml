@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+    <route id="simple-choice">
+      <from uri="direct:simple"/>
+      <choice>
+        <when>
+          <simple>${body} == 'Hello, world!'</simple>
+          <to uri="mock:simple"/>
+        </when>
+      </choice>
+    </route>
+
+
+    <route id="xpath-choice">
+      <from uri="direct:xpath"/>
+      <choice>
+        <when>
+          <xpath>//greeting/text = 'Hello, world!'</xpath>
+          <to uri="mock:xpath"/>
+        </when>
+      </choice>
+    </route>
+
+    <route id="header-choice">
+      <from uri="direct:header"/>
+      <choice>
+        <when>
+          <header>MyHeaderzz</header>
+          <log message="Hello!"/>
+          <to uri="mock:header"/>
+        </when>
+        <otherwise>
+          <to uri="mock:fail"/>
+        </otherwise>
+      </choice>
+    </route>
+
+
+  </camelContext>
+
+</beans>

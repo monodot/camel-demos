@@ -8,14 +8,18 @@ import org.junit.Before;
  */
 public abstract class AbstractBigXmlTest extends CamelTestSupport {
 
-    private int RECORDS = 100000;
+    private int WORKER_RECORDS = 100000;
+    private int ORG_RECORDS = 10000;
+    private int POSITION_RECORDS = 10000;
 
-    private static String STREAM_ENDPOINT = "stream:file?fileName=target/bigfiles/outputfile.xml";
+    private static String WORKER_STREAM = "stream:file?fileName=target/bigfiles/worker.xml";
 
     @Override
     @Before
     public void setUp() throws Exception {
         super.setUp();
+
+        deleteDirectory("target/bigfiles/");
 
         String fileOpen = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
                 "<ws:Worker_Sync xmlns:ws=\"urn:com.workday/workersync\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\">";
@@ -107,13 +111,13 @@ public abstract class AbstractBigXmlTest extends CamelTestSupport {
 
         deleteDirectory("target/bigfiles");
 
-        template.sendBody(STREAM_ENDPOINT, fileOpen);
+        template.sendBody(WORKER_STREAM, fileOpen);
 
-        for (int i = 0; i < RECORDS; i++) {
-            template.sendBody(STREAM_ENDPOINT, worker);
+        for (int i = 0; i < WORKER_RECORDS; i++) {
+            template.sendBody(WORKER_STREAM, worker);
         }
 
-        template.sendBody(STREAM_ENDPOINT, fileClose);
+        template.sendBody(WORKER_STREAM, fileClose);
     }
 
 
