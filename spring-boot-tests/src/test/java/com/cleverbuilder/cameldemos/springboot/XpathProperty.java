@@ -65,17 +65,16 @@ public class XpathProperty {
                 @Override
                 public void configure() throws Exception {
                     from("direct:filter")
-
-                            // This works
+                            // Property gets expanded here
                             .filter().xpath("{{foo}}")
                             // FilterDefinition
                                     .log("Passed filter!")
                                     .to("mock:output-filter");
 
                     from("direct:choice")
+                            // Property does not get expanded here
                             .choice()
-                                    .when().xpath("{{foo}}")
-                            // ChoiceDefinition
+                                    .when(xpath("{{foo}}"))
                                     .log("Passed choice!")
                                     .to("mock:output-choice");
                 }
