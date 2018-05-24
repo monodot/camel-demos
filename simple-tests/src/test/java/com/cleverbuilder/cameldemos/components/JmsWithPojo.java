@@ -11,6 +11,7 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * Created by tdonohue on 24/05/2018.
@@ -66,7 +67,7 @@ public class JmsWithPojo extends CamelTestSupport {
 
                 // Set up the ActiveMQ broker
                 ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(BROKER_URL);
-                cf.setTrustAllPackages(true); // Required to allow a serialised Java object to be pushed to the queue
+                cf.setTrustedPackages(Arrays.asList("com.cleverbuilder.cameldemos.components"));
                 context.addComponent("jms", JmsComponent.jmsComponentAutoAcknowledge(cf));
 
                 // push a POJO to a queue
