@@ -34,6 +34,7 @@ public class UnoptimisedTest extends AbstractBigXmlTest {
     protected MockEndpoint mockEndpoint;
 
     @Test
+    @Ignore
     public void processBigFile() throws Exception {
         mockEndpoint.setExpectedMessageCount(1);
 

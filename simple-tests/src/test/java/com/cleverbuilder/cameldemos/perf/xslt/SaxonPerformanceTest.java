@@ -4,6 +4,7 @@ import org.apache.camel.EndpointInject;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.util.StopWatch;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,7 @@ public class SaxonPerformanceTest extends AbstractBigXmlTest {
     MockEndpoint mockOutput;
 
     @Test
+    @Ignore
     public void processBigFile() throws Exception {
         mockOutput.setExpectedMessageCount(1);
 

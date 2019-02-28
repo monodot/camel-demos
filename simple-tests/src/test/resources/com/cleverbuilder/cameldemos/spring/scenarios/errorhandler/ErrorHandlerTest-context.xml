@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+  <!-- Declare the beans here using explicit XML configuration -->
+  <!-- However, in Spring Boot you would use @Component and component scanning -->
+  <bean id="errorHandler" class="com.cleverbuilder.cameldemos.spring.scenarios.errorhandler.ErrorHandler"/>
+  <bean id="transformer" class="com.cleverbuilder.cameldemos.spring.scenarios.errorhandler.Transformer"/>
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+    <route>
+      <from uri="direct:start"/>
+      <bean ref="transformer"/>
+      <to uri="mock:output"/>
+    </route>
+
+  </camelContext>
+
+</beans>

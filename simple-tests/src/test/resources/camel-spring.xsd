@@ -3,7 +3,7 @@
   <xs:element name="aggregate" type="tns:aggregateDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Aggregates many messages into a single message
+Aggregates many message into a single message
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -28,7 +28,7 @@ protocols.
   <xs:element name="avro" type="tns:avroDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Avro data format is used for serialization and deserialization of messages
+The Avro data format is used for serialization and deserialization of message
 using Apache Avro binary dataformat.
       ]]></xs:documentation>
     </xs:annotation>
@@ -88,7 +88,7 @@ delimited, or fixed length formats).
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
 The Bindy data format is used for working with flat payloads (such as CSV,
-delimited, fixed length formats, or FIX messages).
+delimited, fixed length formats, or FIX message).
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -126,7 +126,7 @@ POJO back to XML payload.
   <xs:element name="choice" type="tns:choiceDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes messages based on a series of predicates
+Routes message based on a series of predicates
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -186,7 +186,7 @@ Converts the message body to another type
   <xs:element name="crypto" type="tns:cryptoDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Crypto data format is used for encrypting and decrypting of messages using Java
+Crypto data format is used for encrypting and decrypting of message using Java
 Cryptographic Extension.
       ]]></xs:documentation>
     </xs:annotation>
@@ -282,7 +282,7 @@ Marks the beginning of a try, catch, finally block
   <xs:element name="dynamicRouter" type="tns:dynamicRouterDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes messages based on dynamic rules
+Routes message based on dynamic rules
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -377,7 +377,7 @@ to/from XML.
   <xs:element name="filter" type="tns:filterDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Filter out messages based using a predicate
+Filter out message based using a predicate
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -471,7 +471,7 @@ To use a Camel Message header in expressions or predicates.
   <xs:element name="hessian" type="tns:hessianDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Hessian data format is used for marshalling and unmarshalling messages using
+Hessian data format is used for marshalling and unmarshalling message using
 Cauchos Hessian format.
       ]]></xs:documentation>
     </xs:annotation>
@@ -505,7 +505,7 @@ Hystrix Circuit Breaker EIP configuration
   <xs:element name="ical" type="tns:icalDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The iCal dataformat is used for working with iCalendar messages.
+The iCal dataformat is used for working with iCalendar message.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -513,7 +513,7 @@ The iCal dataformat is used for working with iCalendar messages.
   <xs:element name="idempotentConsumer" type="tns:idempotentConsumerDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Filters out duplicate messages
+Filters out duplicate message
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -555,7 +555,7 @@ Intercepts a message at each step in the route
   <xs:element name="interceptFrom" type="tns:interceptFromDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Intercepts incoming messages
+Intercepts incoming message
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -563,7 +563,7 @@ Intercepts incoming messages
   <xs:element name="interceptSendToEndpoint" type="tns:interceptSendToEndpointDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Intercepts messages being sent to an endpoint
+Intercepts message being sent to an endpoint
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -825,7 +825,7 @@ Rest PATCH command
   <xs:element name="pgp" type="tns:pgpDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-PGP data format is used for encrypting and decrypting of messages using Java
+PGP data format is used for encrypting and decrypting of message using Java
 Cryptographic Extension and PGP.
       ]]></xs:documentation>
     </xs:annotation>
@@ -858,7 +858,7 @@ Defines a policy the route will use
   <xs:element name="pollEnrich" type="tns:pollEnrichDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Enriches messages with data polled from a secondary resource
+Enriches message with data polled from a secondary resource
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -963,7 +963,7 @@ Random load balancer
   <xs:element name="recipientList" type="tns:recipientListDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes messages to a number of dynamically specified recipients (dynamic to)
+Routes message to a number of dynamically specified recipients (dynamic to)
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1028,7 +1028,7 @@ Removes a named property from the message exchange
   <xs:element name="resequence" type="tns:resequenceDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Resequences (re-order) messages based on an expression
+Resequences (re-order) message based on an expression
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1044,7 +1044,7 @@ To specify the rest operation response headers using Swagger.
   <xs:element name="responseMessage" type="tns:restOperationResponseMsgDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-To specify the rest operation response messages using Swagger.
+To specify the rest operation response message using Swagger.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1199,7 +1199,7 @@ Enables sagas on the route
   <xs:element name="sample" type="tns:samplingDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Extract a sample of the messages passing through a route
+Extract a sample of the message passing through a route
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1341,7 +1341,7 @@ To use Spring Expression Language (SpEL) in Camel expressions or predicates.
   <xs:element name="split" type="tns:splitDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Splits a single message into many sub-messages.
+Splits a single message into many sub-message.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1401,7 +1401,7 @@ String data format is a textual based format that supports character encoding.
   <xs:element name="syslog" type="tns:syslogDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Syslog dataformat is used for working with RFC3164 and RFC5424 messages
+The Syslog dataformat is used for working with RFC3164 and RFC5424 message
 (logging and monitoring).
       ]]></xs:documentation>
     </xs:annotation>
@@ -1459,7 +1459,7 @@ Specifies that all steps after this node are processed asynchronously
   <xs:element name="thrift" type="tns:thriftDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Thrift data format is used for serialization and deserialization of messages
+The Thrift data format is used for serialization and deserialization of message
 using Apache Thrift binary dataformat.
       ]]></xs:documentation>
     </xs:annotation>
@@ -1468,7 +1468,7 @@ using Apache Thrift binary dataformat.
   <xs:element name="throttle" type="tns:throttleDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Controls the rate at which messages are passed to the next node in the route
+Controls the rate at which message are passed to the next node in the route
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1957,7 +1957,7 @@ Default value: 60000
         <xs:attribute name="retriesExhaustedLogLevel" type="tns:loggingLevel">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets the logging level to use for log messages when retries have been exhausted.
+Sets the logging level to use for log message when retries have been exhausted.
 Default value: ERROR
             ]]></xs:documentation>
           </xs:annotation>
@@ -1965,7 +1965,7 @@ Default value: ERROR
         <xs:attribute name="retryAttemptedLogLevel" type="tns:loggingLevel">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets the logging level to use for log messages when retries are attempted.
+Sets the logging level to use for log message when retries are attempted.
 Default value: DEBUG
             ]]></xs:documentation>
           </xs:annotation>
@@ -3037,7 +3037,7 @@ Default value: false
         <xs:attribute name="completionSize" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Number of messages aggregated before the aggregation is complete. This option
+Number of message aggregated before the aggregation is complete. This option
 can be set as either a fixed value or using an Expression which allows you to
 evaluate a size dynamically - will use Integer as result. If both are set Camel
 will fallback to use the fixed value if the Expression result was null or 0.
@@ -4415,8 +4415,8 @@ Set if validation is required for this input type. Default value: false
         <xs:attribute name="uri" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Intercept incoming messages from the uri or uri pattern. If this option is not
-configured, then all incoming messages is intercepted.
+Intercept incoming message from the uri or uri pattern. If this option is not
+configured, then all incoming message is intercepted.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4702,7 +4702,7 @@ or open state
         <xs:attribute name="threshold" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Number of previous failed messages to use as threshold to move state from closed
+Number of previous failed message to use as threshold to move state from closed
 to half-open or open state
             ]]></xs:documentation>
           </xs:annotation>
@@ -7176,8 +7176,8 @@ path to be maintained in the zip file. Default value: false
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then sending messages to the multicasts occurs concurrently. Note the
-caller thread will still wait until all messages has been fully processed,
+If enabled then sending message to the multicasts occurs concurrently. Note the
+caller thread will still wait until all message has been fully processed,
 before it continues. Its only the sending and processing the replies from the
 multicasts which happens concurrently. Default value: false
             ]]></xs:documentation>
@@ -7261,7 +7261,7 @@ Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone messages that should be send, or any custom logic
+can be used to deep-clone message that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -7270,7 +7270,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-messages. Multicast will by default not share unit of work between the parent
+message. Multicast will by default not share unit of work between the parent
 exchange and each multicasted exchange. This means each sub exchange has its own
 individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -7831,7 +7831,7 @@ Sets a reference to use for lookup the policy in the registry.
 Timeout in millis when polling from the external service. The timeout has
 influence about the poll enrich behavior. It basically operations in three
 different modes: negative value - Waits until a message is available and then
-returns it. Warning that this method could block indefinitely if no messages are
+returns it. Warning that this method could block indefinitely if no message are
 available. 0 - Attempts to receive a message exchange immediately without
 waiting and returning null if a message exchange is not available yet. positive
 value - Attempts to receive a message exchange, waiting up to the given timeout
@@ -7941,8 +7941,8 @@ using the value false. The default value is ,. Default value: ,
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then sending messages to the recipients occurs concurrently. Note the
-caller thread will still wait until all messages has been fully processed,
+If enabled then sending message to the recipients occurs concurrently. Note the
+caller thread will still wait until all message has been fully processed,
 before it continues. Its only the sending and processing the replies from the
 recipients which happens concurrently. Default value: false
             ]]></xs:documentation>
@@ -8034,7 +8034,7 @@ bit of care. Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone messages that should be send, or any custom logic
+can be used to deep-clone message that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -8043,7 +8043,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-messages. Recipient List will by default not share unit of work between the
+message. Recipient List will by default not share unit of work between the
 parent exchange and each recipient exchange. This means each sub exchange has
 its own individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -8339,7 +8339,7 @@ Sets the capacity of the resequencer's inbound queue. Default value: 100
         <xs:attribute name="timeout" type="xs:long">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets minimum time to wait for missing elements (messages). Default value: 1000
+Sets minimum time to wait for missing elements (message). Default value: 1000
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -8368,7 +8368,7 @@ To use a custom comparator
         <xs:attribute name="rejectOld" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If true, throws an exception when messages older than the last delivered message
+If true, throws an exception when message older than the last delivered message
 are processed. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -8542,7 +8542,7 @@ Whether to auto start this route. Default value: true
         <xs:attribute name="delayer" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether to slow down processing messages by a given delay in msec.
+Whether to slow down processing message by a given delay in msec.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -8906,9 +8906,9 @@ Sets a reference to lookup for the comparator to use for sorting
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then processing each splitted messages occurs concurrently. Note the
-caller thread will still wait until all messages has been fully processed,
-before it continues. Its only processing the sub messages from the splitter
+If enabled then processing each splitted message occurs concurrently. Note the
+caller thread will still wait until all message has been fully processed,
+before it continues. Its only processing the sub message from the splitter
 which happens concurrently. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -8917,7 +8917,7 @@ which happens concurrently. Default value: false
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets a reference to the AggregationStrategy to be used to assemble the replies
-from the splitted messages, into a single outgoing message from the Splitter. By
+from the splitted message, into a single outgoing message from the Splitter. By
 default Camel will use the original incoming message to the splitter (leave it
 unchanged). You can also use a POJO as the AggregationStrategy
             ]]></xs:documentation>
@@ -8955,15 +8955,15 @@ have to enable that option as well.
             <xs:documentation xml:lang="en"><![CDATA[
 When in streaming mode, then the splitter splits the original message on-demand,
 and each splitted message is processed one by one. This reduces memory usage as
-the splitter do not split all the messages first, but then we do not know the
+the splitter do not split all the message first, but then we do not know the
 total size, and therefore the link org.apache.camel.ExchangeSPLIT_SIZE is empty.
 In non-streaming mode (default) the splitter will split each message first, to
 know the total size, and then process each message one by one. This requires to
-keep all the splitted messages in memory and therefore requires more memory. The
+keep all the splitted message in memory and therefore requires more memory. The
 total size is provided in the link org.apache.camel.ExchangeSPLIT_SIZE header.
 The streaming mode also affects the aggregation behavior. If enabled then Camel
 will process replies out-of-order, eg in the order they come back. If disabled,
-Camel will process replies in the same order as the messages was splitted.
+Camel will process replies in the same order as the message was splitted.
 Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -8986,7 +8986,7 @@ value: false
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets a total timeout specified in millis, when using parallel processing. If the
-Splitter hasn't been able to split and process all the sub messages within the
+Splitter hasn't been able to split and process all the sub message within the
 given timeframe, then the timeout triggers and the Splitter breaks out and
 continues. Notice if you provide a TimeoutAwareAggregationStrategy then the
 timeout method is invoked before breaking out. If the timeout is reached with
@@ -9000,7 +9000,7 @@ bit of care. Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone messages that should be send, or any custom logic
+can be used to deep-clone message that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -9009,7 +9009,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-messages. Splitter will by default not share unit of work between the parent
+message. Splitter will by default not share unit of work between the parent
 exchange and each splitted exchange. This means each splitted exchange has its
 own individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -9494,7 +9494,7 @@ true
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone messages that should be send, or any custom logic
+can be used to deep-clone message that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -10764,7 +10764,7 @@ Default value: false
         <xs:attribute name="xml" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether the input is XML messages. This option must be set to true if working
+Whether the input is XML message. This option must be set to true if working
 with XML payloads. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -10989,8 +10989,8 @@ on a parent level The default value is auto. Default value: auto
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error messages that do not bind to json / xml etc,
-as success messages otherwise will do. This option will override what may be
+This allows to build custom error message that do not bind to json / xml etc,
+as success message otherwise will do. This option will override what may be
 configured on a parent level. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -11332,8 +11332,8 @@ canonical name if you want the input to be an array type.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error messages that do not bind to json / xml etc,
-as success messages otherwise will do. Default value: false
+This allows to build custom error message that do not bind to json / xml etc,
+as success message otherwise will do. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11516,8 +11516,8 @@ Sets the binding mode to use. The default value is off. Default value: off
       <xs:annotation>
         <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error messages that do not bind to json / xml etc,
-as success messages otherwise will do. Default value: false
+This allows to build custom error message that do not bind to json / xml etc,
+as success message otherwise will do. Default value: false
         ]]></xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -11612,8 +11612,8 @@ on a parent level The default value is auto. Default value: auto
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error messages that do not bind to json / xml etc,
-as success messages otherwise will do. This option will override what may be
+This allows to build custom error message that do not bind to json / xml etc,
+as success message otherwise will do. This option will override what may be
 configured on a parent level. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -11977,7 +11977,7 @@ Set whether MDC is enabled.
         <xs:attribute name="useDataType" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether to enable using data type on Camel messages. Data type are automatic
+Whether to enable using data type on Camel message. Data type are automatic
 turned on if: one ore more routes has been explicit configured with input and
 output types when using rest-dsl with binding turned on Otherwise data type is
 default off.

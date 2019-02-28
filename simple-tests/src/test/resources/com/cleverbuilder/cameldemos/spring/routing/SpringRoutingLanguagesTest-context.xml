@@ -8,6 +8,8 @@
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 
+    <propertyPlaceholder id="properties"/>
+
     <route id="simple-choice">
       <from uri="direct:simple"/>
       <choice>
@@ -42,7 +44,6 @@
         </otherwise>
       </choice>
     </route>
-
 
   </camelContext>
 

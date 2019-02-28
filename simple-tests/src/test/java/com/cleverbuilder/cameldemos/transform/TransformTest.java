@@ -10,6 +10,8 @@ import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
+import java.io.File;
+
 /**
  * Created by tdonohue on 08/05/2018.
  */
@@ -31,6 +33,19 @@ public class TransformTest extends CamelTestSupport {
 
     }
 
+    @Test
+    public void testAlbumTracksCsv() throws InterruptedException {
+        String expected = "[{\"Artist\":\"BK\",\"Title\":\"P.O.S. 51\",\"Remix\":\"\",\"Length\":\"5:25\"},{\"Artist\":\"Oxia\",\"Title\":\"Contrast\",\"Remix\":\"\",\"Length\":\"3:03\"},{\"Artist\":\"Exit EEE\",\"Title\":\"Epidemic\",\"Remix\":\"Edison Factor Remix\",\"Length\":\"5:25\"},{\"Artist\":\"Mark Gray\",\"Title\":\"99.9\",\"Remix\":\"\",\"Length\":\"4:46\"}";
+        mockCsvJsonOutput.expectedMessageCount(1);
+
+        template.sendBody("direct:start", new File("src/test/data/album_tracks.csv"));
+
+        assertMockEndpointsSatisfied();
+
+        String output = mockCsvJsonOutput.getExchanges().get(0).getIn().getBody(String.class);
+        assertTrue(output.startsWith(expected));
+    }
+
     @Override
     protected RoutesBuilder createRouteBuilder() throws Exception {
         return new RouteBuilder() {
@@ -39,8 +54,9 @@ public class TransformTest extends CamelTestSupport {
 
                 // Set up a CSV data format and store values in a Map,
                 // like Header=Value,Header=Value,Header=Value, etc.
+
+                // Set up a CSV data format
                 CsvDataFormat csv = new CsvDataFormat();
-                csv.setSkipHeaderRecord(true);
                 csv.setUseMaps(true);
 
                 // Set up a simple JSON output format
@@ -49,6 +65,7 @@ public class TransformTest extends CamelTestSupport {
                 from("direct:start")
                         .unmarshal(csv)
                         .marshal(json)
+                        .to("log:mylogger?showHeaders=true")
                         .to("mock:csv-json-output");
             }
         };

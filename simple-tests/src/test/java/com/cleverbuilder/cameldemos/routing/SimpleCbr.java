@@ -26,6 +26,12 @@ public class SimpleCbr extends CamelTestSupport {
     @EndpointInject(uri = "mock:contains-true")
     MockEndpoint mockContainsTrue;
 
+    @EndpointInject(uri = "mock:starts-with-true")
+    MockEndpoint mockStartsWithTrue;
+
+    @EndpointInject(uri = "mock:greater-than-true")
+    MockEndpoint mockGreaterThanTrue;
+
     @Test
     public void testHelloWorld() throws InterruptedException {
         mockHelloWorld.expectedMessageCount(1);
@@ -48,7 +54,7 @@ public class SimpleCbr extends CamelTestSupport {
     public void simpleHeader() throws InterruptedException {
         mockHeaderTrue.expectedMessageCount(1);
 
-        template.sendBodyAndHeader("direct:endswith", "Hello, world!",
+        template.sendBodyAndHeader("direct:header", "Hello, world!",
                 "EggType", "scrambled");
 
         assertMockEndpointsSatisfied(5L, TimeUnit.SECONDS);
@@ -61,6 +67,25 @@ public class SimpleCbr extends CamelTestSupport {
         template.sendBody("direct:contains", "bacon and eggs");
 
         assertMockEndpointsSatisfied(5L, TimeUnit.SECONDS);
+    }
+
+    @Test
+    public void startsWith() throws InterruptedException {
+        mockStartsWithTrue.expectedMessageCount(1);
+
+        template.sendBody("direct:starts-with", "bacon sandwich");
+
+        assertMockEndpointsSatisfied();
+    }
+
+    @Test
+    public void greaterThan() throws InterruptedException {
+        mockGreaterThanTrue.expectedMessageCount(1);
+
+        template.sendBodyAndHeader("direct:greater-than", "breakfast",
+                "CupsOfCoffee", "4");
+
+        assertMockEndpointsSatisfied();
     }
 
     @Override
@@ -88,6 +113,16 @@ public class SimpleCbr extends CamelTestSupport {
                                 .to("mock:contains-true")
                             .otherwise()
                                 .to("mock:contains-false");
+
+                from("direct:starts-with")
+                        .choice()
+                            .when(simple("${body} starts with 'bacon'"))
+                                .to("mock:starts-with-true");
+
+                from("direct:greater-than")
+                        .choice()
+                            .when(simple("${header.CupsOfCoffee} > 5"))
+                                .to("mock:greater-than-true");
             }
         };
     }

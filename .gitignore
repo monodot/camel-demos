@@ -109,3 +109,9 @@ Session.vim
 tags
 
 # End of https://www.gitignore.io/api/vim,intellij,intellij+iml
+
+# Eclipsey
+.classpath
+.factorypath
+.project
+.settings

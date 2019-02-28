@@ -1,0 +1,18 @@
+<mappings xmlns="http://dozermapper.github.io/schema/bean-mapping"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozermapper.github.io/schema/bean-mapping http://dozermapper.github.io/schema/bean-mapping.xsd">
+  <mapping>
+    <class-a>com.cleverbuilder.cameldemos.transform.Lead</class-a>
+    <class-b>com.cleverbuilder.cameldemos.transform.Customer</class-b>
+    <!-- Map Lead.name to Customer.fullName -->
+    <field>
+      <a>name</a>
+      <b>fullName</b>
+    </field>
+    <!-- Map Lead.country to Customer.location -->
+    <field>
+      <a>country</a>
+      <b>location</b>
+    </field>
+  </mapping>
+</mappings>

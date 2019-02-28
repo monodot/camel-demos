@@ -56,5 +56,4 @@ public class SpringRoutingLanguagesTest extends TestSupport {
         mockHeader.assertIsSatisfied(1L, TimeUnit.SECONDS);
     }
 
-
 }

@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos;
+package com.cleverbuilder.cameldemos.simple;
 
 import org.apache.camel.main.Main;
 

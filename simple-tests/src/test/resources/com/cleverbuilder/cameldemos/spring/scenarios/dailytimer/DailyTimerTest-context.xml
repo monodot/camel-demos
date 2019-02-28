@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+  <bean id="processor"
+        class="com.cleverbuilder.cameldemos.spring.scenarios.dailytimer.PrintDocuments"/>
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+    <route>
+      <!--
+      This would be midnight every day:
+      <from uri="quartz2://mytimer?cron=0+0+0+*+*+?"/>
+      -->
+      <from uri="quartz2://mytimer?cron=0/2+*+*+*+*+?"/>
+      <setHeader headerName="printerName">
+        <constant/>
+      </setHeader>
+      <setHeader headerName="printDir">
+        <constant>C:\print_temp</constant>
+      </setHeader>
+      <bean ref="processor" method="printDocuments"/>
+    </route>
+
+  </camelContext>
+
+</beans>
