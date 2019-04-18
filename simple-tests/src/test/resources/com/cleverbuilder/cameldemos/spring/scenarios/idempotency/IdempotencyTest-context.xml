@@ -8,8 +8,10 @@
 
   <!-- Configures a simple, ephemeral in-memory database for storing message IDs -->
   <!-- This stores entries in a Map structure; single instance so no clustering support -->
+  <!-- Cluster-aware alternatives include JdbcMessageIdRepository, JpaMessageIdRepository, InfinispanIdempotentRepository, etc. -->
   <bean id="inmemoryRepository"
         class="org.apache.camel.processor.idempotent.MemoryIdempotentRepository"/>
+
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 
