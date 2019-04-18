@@ -22,7 +22,7 @@
       </setHeader>
       <log message="Derived message key: ${header.CompoundMessageKey}"/>
 
-      <idempotentConsumer messageIdRepositoryRef="inmemoryRepository" >
+      <idempotentConsumer messageIdRepositoryRef="inmemoryRepository">
         <header>CompoundMessageKey</header>
         <log message="Processing this message"/>
         <to uri="mock:process"/>
