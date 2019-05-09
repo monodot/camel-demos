@@ -1,3 +1,4 @@
 # spring-boot-tests
 
-A place for Camel tests that are focused on Spring Boot.
+Some unit tests to test out Camel and Spring Boot functionality.
+

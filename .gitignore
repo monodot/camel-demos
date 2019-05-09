@@ -115,3 +115,6 @@ tags
 .factorypath
 .project
 .settings
+
+# Java/Maven
+target/

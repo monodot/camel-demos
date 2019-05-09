@@ -84,10 +84,13 @@
     </dependency>
 
     <!-- For REST -->
+    <!-- Removing camel-restlet since the artifacts aren't in Maven Central -->
+<!--
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-restlet</artifactId>
     </dependency>
+-->
     <dependency>
       <groupId>org.apache.camel</groupId>
       <artifactId>camel-spark-rest</artifactId>

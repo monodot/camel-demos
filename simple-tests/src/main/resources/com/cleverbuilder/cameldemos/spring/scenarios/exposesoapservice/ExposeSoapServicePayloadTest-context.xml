@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route>
+            <from uri="cxf://http://localhost:8189/BookService?wsdlURL=/wsdl/BookService.wsdl&amp;serviceClass=com.cleverbuilder.bookservice.BookService&amp;dataFormat=PAYLOAD"/>
+
+            <setBody>
+                <constant>&lt;GetAllBooksResponse xmlns="http://www.cleverbuilder.com/BookService/"/&gt;</constant>
+            </setBody>
+        </route>
+
+    </camelContext>
+
+</beans>

@@ -25,7 +25,6 @@ import java.util.Map;
         classes = JdbcIdempotencyTest.Config.class,
         properties = {}
 )
-@JdbcTest // configures an in-memory embedded database and a JdbcTemplate.
 @AutoConfigureTestDatabase // requires spring-boot-test-autoconfigure dependency
 public class JdbcIdempotencyTest {
 

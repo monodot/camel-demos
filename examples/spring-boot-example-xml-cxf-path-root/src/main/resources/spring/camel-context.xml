@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route>
+            <from uri="cxf:/{{service1.path}}?wsdlURL=/wsdl/BookService.wsdl&amp;serviceClass=com.cleverbuilder.bookservice.BookService"/>
+            <log message="Received message at mypath1!"/>
+            <!-- Use the ObjectFactory provided by wsdl2java to create an empty, valid response object -->
+            <bean beanType="com.cleverbuilder.bookservice.ObjectFactory" method="createGetAllBooksResponse"/>
+        </route>
+
+        <route>
+            <from uri="cxf:/{{service2.path}}?wsdlURL=/wsdl/BookService.wsdl&amp;serviceClass=com.cleverbuilder.bookservice.BookService"/>
+            <log message="Received message at mypath2!"/>
+            <!-- Use the ObjectFactory provided by wsdl2java to create an empty, valid response object -->
+            <bean beanType="com.cleverbuilder.bookservice.ObjectFactory" method="createGetAllBooksResponse"/>
+        </route>
+
+    </camelContext>
+
+</beans>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>camel-demos</artifactId>
+        <groupId>com.cleverbuilder.cameldemos</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>parent</artifactId>
+    <packaging>pom</packaging>
+    <name>Clever Builder :: Camel Demos :: Parent</name>
+    <description>Sets version numbers for (some of, soon to be all) the examples</description>
+
+    <properties>
+        <!--
+          Camel/Spring Boot version mappings (for past reference):
+          Camel 2.23.2 => Spring Boot 2.1.0.RELEASE
+        -->
+
+        <!-- Initialise the Camel/Spring Boot versions -->
+        <camel.version>2.23.2</camel.version>
+        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+
+        <cxf.version>3.2.7</cxf.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- Camel BOM -->
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-spring-boot-dependencies</artifactId>
+                <version>${camel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+
+        <!--
+        From the Maven docs: https://maven.apache.org/guides/mini/guide-configuring-plugins.html
+
+        "It is recommended to always define each version of the plugins
+        used by the build to guarantee the build reproducibility.
+
+        "A good practice is to specify them in the
+        <build><pluginManagement/></build> elements for each build plugins
+        (generally, you will define a <pluginManagement/> element in a parent POM)."
+        -->
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.cxf</groupId>
+                    <artifactId>cxf-codegen-plugin</artifactId>
+                    <version>${cxf.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>

@@ -47,7 +47,7 @@ public class RestDslRestlet extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 restConfiguration()
-                        .component("restlet")
+//                        .component("restlet")
                         .host("localhost").port("8080");
 
                 rest("/customers")
