@@ -1,5 +1,6 @@
 ![Build Status][buildstatus]
 ![Project licence][licence]
+![Egg Status][eggs]
 
 # camel-demos
 
@@ -21,6 +22,7 @@ Thanks, Tom.
 [camelsbs]: https://cleverbuilder.com/camelstepbystep
 [buildstatus]: https://api.travis-ci.org/monodot/camel-demos.svg?branch=master
 [licence]: https://img.shields.io/github/license/monodot/camel-demos.svg
+[eggs]: https://img.shields.io/badge/eggs-poached-yellow.svg
 
 
 
