@@ -31,11 +31,13 @@ public class SpringFileToSimpleCbr extends TestSupport {
 
     @Test
     public void testProcess() throws Exception {
-        // TODO - doesn't seem to do anything
         template.sendBodyAndHeader("file:target/files/input", "Cilla Black",
                 Exchange.FILE_NAME, "artist.txt");
 
-        assertFileExists("target/files/cilla_black/artist.txt");
+        // Give the route enough time to process the file
+        Thread.sleep(2000L);
+
+        assertFileExists("target/files/output/cilla_black/artist.txt");
     }
 
 }

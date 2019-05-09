@@ -83,7 +83,7 @@ public class SimpleCbr extends CamelTestSupport {
         mockGreaterThanTrue.expectedMessageCount(1);
 
         template.sendBodyAndHeader("direct:greater-than", "breakfast",
-                "CupsOfCoffee", "4");
+                "CupsOfCoffee", "6");
 
         assertMockEndpointsSatisfied();
     }

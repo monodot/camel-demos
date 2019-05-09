@@ -21,6 +21,7 @@
       </get>
       <post>
         <route>
+          <log message="Received a POST request"/>
           <to uri="file:target/output/customers"/>
           <setBody>
             <constant>Thanks!</constant>

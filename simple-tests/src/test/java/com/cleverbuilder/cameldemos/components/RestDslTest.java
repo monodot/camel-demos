@@ -23,7 +23,8 @@ import java.util.Map;
  */
 public class RestDslTest extends CamelTestSupport {
 
-    private static final String COMPONENT = "restlet";
+    private static final String COMPONENT = "jetty";
+    private static final String PRODUCER_COMPONENT = "jetty";
 
     @Override
     @Before
@@ -201,7 +202,7 @@ public class RestDslTest extends CamelTestSupport {
 
                         // required because Camel needs to know which component
                         // will be used to *invoke* REST services
-                        .producerComponent("restlet")
+                        .producerComponent(PRODUCER_COMPONENT)
                         .host("localhost").port("8080");
 
                 rest("/customers")

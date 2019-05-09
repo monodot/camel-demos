@@ -104,10 +104,11 @@ public class RoutingLanguagesTest extends CamelTestSupport {
 
                 from("direct:jsonpath")
                         .choice()
-                            //.when().jsonpath("$[?(@.text == 'Hello, world!')]'") - doesn't work
-                            .when().jsonpath("$.greeting[?(@.text == 'Hello, world!!')]")
+                            .when().jsonpath("$.greeting[?(@.text == 'Hello, world!')]")
+                                .log("jsonpath expression evaluated to true")
                                 .to("mock:pass")
                             .otherwise()
+                                .log("jsonpath expression evaluated to NOT true")
                                 .to("mock:otherwise");
 
             }

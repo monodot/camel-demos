@@ -24,9 +24,9 @@ public class FileToSimpleCbr extends CamelTestSupport {
         template.sendBodyAndHeader("file://target/files/input", "Cilla Black",
                 Exchange.FILE_NAME, "artist.txt");
 
-        Thread.sleep(1000L);
+        Thread.sleep(2000L);
 
-        assertFileExists("target/files/cilla_black/artist.txt");
+        assertFileExists("target/files/output/cilla_black/artist.txt");
     }
 
     @Override
@@ -43,7 +43,7 @@ public class FileToSimpleCbr extends CamelTestSupport {
                         .choice()
                             .when(simple("${bodyAs(String)} contains 'Cilla'"))
                             .log("File matched routing rule! Moving to target location")
-                            .to("file:target/files/cilla_black");
+                            .to("file:target/files/output/cilla_black");
 
             }
         };

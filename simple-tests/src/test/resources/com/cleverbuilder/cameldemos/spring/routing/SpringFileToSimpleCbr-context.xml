@@ -12,8 +12,9 @@
       <from uri="direct:process-file"/>
       <choice>
         <when>
-          <simple>${body} contains 'Cilla Black'</simple>
-          <to uri="file:target/files/cilla_black"/>
+          <simple>${bodyAs(String)} contains 'Cilla Black'</simple>
+          <log message="Received a file!"/>
+          <to uri="file:target/files/output/cilla_black"/>
         </when>
       </choice>
     </route>
