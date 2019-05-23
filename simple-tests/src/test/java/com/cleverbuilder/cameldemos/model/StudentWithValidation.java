@@ -1,10 +1,7 @@
 package com.cleverbuilder.cameldemos.model;
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 
 /**
  * Created by tdonohue on 05/06/2018.

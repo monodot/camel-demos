@@ -189,6 +189,17 @@
             <artifactId>camel-stream</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-blueprint</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm-commons</artifactId>
+            <version>5.0.3</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- So that CXF can stand up a test service -->
         <dependency>
