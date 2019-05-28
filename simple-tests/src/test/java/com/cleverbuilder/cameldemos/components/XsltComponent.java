@@ -24,7 +24,7 @@ public class XsltComponent extends CamelTestSupport {
         mockOutput.expectedMessageCount(1);
 
         // How to implement an XPath based assertion (import this static xpath method)
-        mockOutput.expectedMessagesMatches(xpath("count(//Person) = 3"));
+        mockOutput.expectedMessagesMatches(xpath("count(//PersonImpl) = 3"));
 
         template.sendBody("direct:start", "<staff><person>Jane</person><person>Alex</person><person>Steve</person></staff>");
 

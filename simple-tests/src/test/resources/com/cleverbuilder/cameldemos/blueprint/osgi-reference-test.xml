@@ -3,12 +3,13 @@
              http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
              http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
 
-
+    <reference id="samplePerson" interface="com.cleverbuilder.cameldemos.model.Person"/>
+    
     <camelContext xmlns="http://camel.apache.org/schema/blueprint">
         <route>
             <from uri="direct:start"/>
             <setBody>
-                <constant>Hello der</constant>
+                <simple>${ref:samplePerson}</simple>
             </setBody>
             <to uri="mock:output"/>
         </route>

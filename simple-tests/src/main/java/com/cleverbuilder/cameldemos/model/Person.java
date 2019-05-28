@@ -1,28 +1,11 @@
 package com.cleverbuilder.cameldemos.model;
 
-public class Person {
+public interface Person {
+    String getFirstName();
 
-    private String firstName;
-    private String lastName;
+    void setFirstName(String firstName);
 
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
+    String getLastName();
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    void setLastName(String lastName);
 }

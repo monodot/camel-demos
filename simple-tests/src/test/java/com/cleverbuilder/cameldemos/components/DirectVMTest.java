@@ -1,19 +1,17 @@
 package com.cleverbuilder.cameldemos.components;
 
 import com.cleverbuilder.cameldemos.model.Person;
+import com.cleverbuilder.cameldemos.model.PersonImpl;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.util.ServiceHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.apache.camel.test.junit4.TestSupport.assertIsInstanceOf;
 import static org.apache.camel.test.junit4.TestSupport.resolveMandatoryEndpoint;
@@ -58,13 +56,13 @@ public class DirectVMTest {
         MockEndpoint mock = camelContext2.getEndpoint("mock:result", MockEndpoint.class);
         mock.expectedMessageCount(1);
 
-        Person person = new Person("Dave", "Lee-Travis");
+        Person person = new PersonImpl("Dave", "Lee-Travis");
 
         templateInContext1.sendBody("direct:start", person);
 
         MockEndpoint.assertIsSatisfied(camelContext2);
 
-        assertIsInstanceOf(Person.class, mock.getExchanges().get(0).getMessage().getBody(Person.class));
+        assertIsInstanceOf(PersonImpl.class, mock.getExchanges().get(0).getMessage().getBody(PersonImpl.class));
     }
 
     /**

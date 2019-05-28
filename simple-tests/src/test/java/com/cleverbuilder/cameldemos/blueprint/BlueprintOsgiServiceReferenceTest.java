@@ -1,11 +1,21 @@
 package com.cleverbuilder.cameldemos.blueprint;
 
+import com.cleverbuilder.cameldemos.model.Person;
+import com.cleverbuilder.cameldemos.model.PersonImpl;
 import org.apache.camel.EndpointInject;
+import org.apache.camel.Exchange;
+import org.apache.camel.Predicate;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
+import org.apache.camel.util.KeyValueHolder;
 import org.junit.Test;
 
+import java.util.Dictionary;
+import java.util.Map;
+
 public class BlueprintOsgiServiceReferenceTest extends CamelBlueprintTestSupport {
+
+    private Person person = new PersonImpl("Dave Lee", "Travis");
 
     @Override
     protected String getBundleFilter() {
@@ -21,12 +31,19 @@ public class BlueprintOsgiServiceReferenceTest extends CamelBlueprintTestSupport
                 ")";
     }
 
-    @EndpointInject(uri = "mock:output")
-    MockEndpoint mockOutput;
-
     @Override
     protected String getBlueprintDescriptor() {
         return "/com/cleverbuilder/cameldemos/blueprint/osgi-reference-test.xml";
+    }
+
+    /**
+     * Add the required service (a Person) into the Blueprint context
+     */
+    @Override
+    protected void addServicesOnStartup(Map<String, KeyValueHolder<Object, Dictionary>> services) {
+        // Give the type (interface) of the object to register,
+        // and pass the object itself
+        services.put(Person.class.getName(), asService(person, null));
     }
 
     @Test
@@ -41,7 +58,7 @@ public class BlueprintOsgiServiceReferenceTest extends CamelBlueprintTestSupport
         MockEndpoint mock = getMockEndpoint("mock:output");
 
         mock.expectedMessageCount(1);
-        mock.expectedBodiesReceived("Hello der");
+        mock.message(0).body().isInstanceOf(Person.class);
 
         template.sendBody("direct:start", "Hiya");
 
