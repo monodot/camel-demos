@@ -12,9 +12,13 @@ public class BlueprintOsgiServiceReferenceTest extends CamelBlueprintTestSupport
         // Remove the bundles we don't want to be added into the context, using a filter
         // CamelBlueprintHelper normally just scans the classpath for bundles and adds them all.
         // Removing infinispan because it seems to contain a blueprint XML file inside it, and that was causing the test to hang.
-        // We don't want that, do we!
-        // I found this out by enabling all DEBUG logs (which my IntelliJ already seems to do - no idea why - possibly because Spring is on the classpath or something)
-        return "(&(Bundle-SymbolicName=*)(!(Bundle-SymbolicName=org.infinispan.core)))";
+        // Also removing CXF because it complains about there being no HTTP server available
+        // We don't want that, do we....
+        // I found this out by enabling all DEBUG logs - check logback config XML for this.
+        return "(&(Bundle-SymbolicName=*)" +
+                "(!(Bundle-SymbolicName=org.infinispan.core))" +
+                "(!(Bundle-SymbolicName=org.apache.cxf.cxf-rt-transports-http))" +
+                ")";
     }
 
     @EndpointInject(uri = "mock:output")
@@ -26,8 +30,18 @@ public class BlueprintOsgiServiceReferenceTest extends CamelBlueprintTestSupport
     }
 
     @Test
+    public void testContextOk() throws Exception {
+        // Just check that the Camel Context started correctly
+        assertTrue(context.getStatus().isStarted());
+    }
+
+
+    @Test
     public void testHello() throws Exception {
-        mockOutput.expectedMessageCount(1);
+        MockEndpoint mock = getMockEndpoint("mock:output");
+
+        mock.expectedMessageCount(1);
+        mock.expectedBodiesReceived("Hello der");
 
         template.sendBody("direct:start", "Hiya");
 
