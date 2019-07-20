@@ -11,6 +11,7 @@ import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -138,10 +139,12 @@ public class RestDslTest extends CamelTestSupport {
 
     /**
      * Tests using the REST component to execute a simple GET with a parameter
-     * against a public web service
+     * against a public web service.
+     * Ignored because the remote web service isn't reliable.
      * @throws Exception
      */
     @Test
+    @Ignore
     public void testInvokeRestService() throws Exception {
         Exchange response = template.send("direct:invoke-rest", new Processor() {
             @Override
