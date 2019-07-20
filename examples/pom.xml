@@ -12,12 +12,14 @@
   </parent>
 
   <artifactId>spring-boot-examples</artifactId>
-  <name>Clever Builder :: Camel Demos :: Spring Boot Examples</name>
+  <name>Tom D :: Camel Demos :: Spring Boot Examples</name>
   <description>Example Spring Boot apps demonstrating Apache Camel functionality</description>
   <packaging>pom</packaging>
 
   <modules>
     <module>spring-boot-example-xml-cxf-path-root</module>
+    <module>spring-boot-example-file-upload</module>
+    <module>spring-boot-example-mongodb3-camel221</module>
   </modules>
 
 </project>
