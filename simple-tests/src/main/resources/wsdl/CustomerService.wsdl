@@ -1,0 +1,84 @@
+<definitions
+        name="CustomerService"
+        targetNamespace="http://customerservice.tomd.xyz/"
+        xmlns="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:tns="http://customerservice.tomd.xyz/"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+        xmlns:tns0="http://customerservice.tomd.xyz/types/"
+>
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema"
+                targetNamespace="http://www.oracle.com/webservices/internal/literal"
+                elementFormDefault="qualified" xmlns:tns="http://www.oracle.com/webservices/internal/literal"
+        >
+            <import namespace="http://customerservice.tomd.xyz/types/"/>
+            <complexType name="list">
+                <complexContent>
+                    <extension base="tns:collection">
+                        <sequence/>
+                    </extension>
+                </complexContent>
+            </complexType>
+            <complexType name="collection">
+                <sequence>
+                    <element name="item" type="anyType" minOccurs="0" maxOccurs="unbounded"/>
+                </sequence>
+            </complexType>
+        </schema>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://customerservice.tomd.xyz/types/"
+                elementFormDefault="qualified" xmlns:tns="http://customerservice.tomd.xyz/types/"
+                xmlns:ns1="http://www.oracle.com/webservices/internal/literal">
+            <import namespace="http://www.oracle.com/webservices/internal/literal"/>
+            <complexType name="CustomerItem">
+                <sequence>
+                    <element name="firstName" type="string" nillable="true"/>
+                    <element name="lastName" type="string"/>
+                </sequence>
+            </complexType>
+            <element name="getCustomersElement">
+                <complexType>
+                    <sequence>
+                        <element name="location" type="string" nillable="true"/>
+                        <element name="criteria" type="string" nillable="true"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="getCustomersResponseElement">
+                <complexType>
+                    <sequence>
+                        <element name="result" type="ns1:list" nillable="true"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </types>
+    <message name="CustomerService_getCustomers">
+        <part name="parameters" element="tns0:getCustomersElement"/>
+    </message>
+    <message name="CustomerService_getCustomersResponse">
+        <part name="parameters" element="tns0:getCustomersResponseElement"/>
+    </message>
+    <portType name="CustomerService">
+        <operation name="getCustomers">
+            <input message="tns:CustomerService_getCustomers"/>
+            <output message="tns:CustomerService_getCustomersResponse"/>
+        </operation>
+    </portType>
+    <binding name="CustomerServiceSoap12Http" type="tns:CustomerService">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="getCustomers">
+            <soap12:operation soapAction="http://customerservice.tomd.xyz//getCustomers" soapActionRequired="false"/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="CustomerService">
+        <port name="CustomerServiceSoap12HttpPort" binding="tns:CustomerServiceSoap12Http">
+            <soap12:address location="http://127.0.0.1:8888/CustomerService"/>
+        </port>
+    </service>
+</definitions>

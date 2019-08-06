@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd
+    ">
+
+    <!-- There is a nested Processor class inside the test class which will generate some sample return data -->
+    <bean id="testResponseProcessor"
+          class="com.cleverbuilder.cameldemos.spring.scenarios.cxfcustomnsprefix.CxfCustomNamespacePrefixTest$TestResponseProcessor"/>
+
+    <!-- Configure the CXF endpoint manually here so that we have a bit more control over it -->
+    <cxf:cxfEndpoint id="customerEndpoint"
+            address="http://localhost:8189/CustomerService"
+            wsdlURL="/wsdl/CustomerService.wsdl"
+            serviceClass="xyz.tomd.customerservice.CustomerService">
+        <cxf:properties>
+            <!-- Manually set the prefixes of namespaces in the output -->
+            <entry key="soap.env.ns.map">
+                <map>
+                    <entry key="ns0" value="http://customerservice.tomd.xyz/types/"/>
+                    <entry key="ns1" value="http://www.oracle.com/webservices/internal/literal"/>
+                    <entry key="env" value="http://schemas.xmlsoap.org/soap/envelope/"/>
+                </map>
+            </entry>
+            <!-- This property will prevent CXF from setting a default namespace where it can -->
+            <entry key="disable.outputstream.optimization" value="true"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route id="service-provider-route">
+            <from uri="cxf:bean:customerEndpoint"/>
+            <process ref="testResponseProcessor"/>
+            <log message="Received request"/>
+        </route>
+
+    </camelContext>
+
+</beans>

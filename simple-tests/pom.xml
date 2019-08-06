@@ -140,6 +140,11 @@
             <artifactId>camel-cxf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-groovy</artifactId>
+        </dependency>
+
 
         <!-- For random string utils -->
         <dependency>
@@ -297,6 +302,7 @@
                             <wsdlOptions>
                                 <wsdlOption>
                                     <wsdl>src/main/resources/wsdl/BookService.wsdl</wsdl>
+                                    <wsdl>src/main/resources/wsdl/CustomerService.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
