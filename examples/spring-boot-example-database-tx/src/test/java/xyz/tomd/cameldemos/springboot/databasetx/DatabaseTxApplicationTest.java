@@ -49,8 +49,8 @@ public class DatabaseTxApplicationTest {
         mockEndpoint.expectedMessageCount(1);
         mockEndpoint.assertIsSatisfied(10, TimeUnit.SECONDS);
 
-        // and there should be 1 rows in the database as we keep rolling back
+        // there should be 0 rows in the database because we've rolled back
         int rows = jdbcTemplate.queryForObject("select count(*) from customers", Integer.class);
-        assertEquals(4, rows);
+        assertEquals(0, rows);
     }
 }
