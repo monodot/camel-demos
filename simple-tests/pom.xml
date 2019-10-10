@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>simple-tests</artifactId>
-    <name>Clever Builder :: Camel Demos :: Simple Tests</name>
+    <name>Tom D :: Camel Demos :: Simple Tests</name>
     <description>Simple tests of Apache Camel functionality</description>
 
     <properties>
@@ -143,6 +143,21 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-groovy</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-aws</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-sql</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>test</scope>
         </dependency>
 
 
