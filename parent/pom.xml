@@ -3,28 +3,38 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
+        <groupId>xyz.tomd.demos.camel</groupId>
         <artifactId>camel-demos</artifactId>
-        <groupId>com.cleverbuilder.cameldemos</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>parent</artifactId>
+    <artifactId>camel-demos-parent</artifactId>
     <packaging>pom</packaging>
-    <name>Clever Builder :: Camel Demos :: Parent</name>
+    <name>Tom D :: Camel Demos :: Parent</name>
     <description>Sets version numbers for (some of, soon to be all) the examples</description>
 
     <properties>
         <!--
           Camel/Spring Boot version mappings (for past reference):
           Camel 2.23.2 => Spring Boot 2.1.0.RELEASE
+          Camel 3.0.0 => Spring Boot 2.2.1.RELEASE
         -->
 
         <!-- Initialise the Camel/Spring Boot versions -->
-        <camel.version>2.23.2</camel.version>
-        <spring-boot.version>2.1.0.RELEASE</spring-boot.version>
+        <!--<camel.version>2.21.0</camel.version>-->
+        <!--<spring-boot.version>1.5.10.RELEASE</spring-boot.version>-->
 
-        <cxf.version>3.2.7</cxf.version>
+        <!--<camel.version>2.23.2</camel.version>-->
+        <!--<spring-boot.version>2.1.0.RELEASE</spring-boot.version>-->
+
+        <camel.version>3.0.0</camel.version>
+        <spring-boot.version>2.2.1.RELEASE</spring-boot.version>
+        <cxf.version>3.3.4</cxf.version>
+
+        <hawtio.version>2.8.0</hawtio.version>
+
+
     </properties>
 
     <dependencyManagement>
@@ -39,7 +49,7 @@
             </dependency>
             <!-- Camel BOM -->
             <dependency>
-                <groupId>org.apache.camel</groupId>
+                <groupId>org.apache.camel.springboot</groupId>
                 <artifactId>camel-spring-boot-dependencies</artifactId>
                 <version>${camel.version}</version>
                 <type>pom</type>
@@ -67,6 +77,15 @@
                     <groupId>org.apache.cxf</groupId>
                     <artifactId>cxf-codegen-plugin</artifactId>
                     <version>${cxf.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${jdk.version}</source>
+                        <target>${jdk.version}</target>
+                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>

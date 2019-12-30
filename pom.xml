@@ -4,17 +4,26 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cleverbuilder.cameldemos</groupId>
+    <groupId>xyz.tomd.demos.camel</groupId>
     <artifactId>camel-demos</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-    <name>Clever Builder :: Camel Demos</name>
-    <description>Parent project for demos of Apache Camel functionality</description>
+    <name>Tom D :: Camel Demos</name>
+    <description>Demos of Apache Camel functionality</description>
+
+    <developers>
+        <developer>
+            <name>Tom Donohue</name>
+            <url>https://tomd.xyz</url>
+        </developer>
+    </developers>
 
     <properties>
         <!-- Standard Maven chat -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jdk.version>1.8</jdk.version> <!-- TODO update this (eventually) to Java 11 -->
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
     </properties>
 
     <modules>
