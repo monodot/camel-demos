@@ -23,7 +23,7 @@
 
         <byteman.version>4.0.8</byteman.version>
         <!-- Required by the `byteman` profile when running under Java 1.8; you should replace this property with your local path to tools.jar -->
-        <tools.jar>/usr/lib/jvm/java-1.8.0/lib/tools.jar</tools.jar>
+        <tools.jar>${java.home}/../lib/tools.jar</tools.jar>
     </properties>
 
     <dependencyManagement>
@@ -313,7 +313,7 @@
         <dependency>
             <groupId>com.sun</groupId>
             <artifactId>tools</artifactId>
-            <version>1.6</version>
+            <version>${jdk.version}</version>
             <scope>system</scope>
             <systemPath>${tools.jar}</systemPath>
         </dependency>
