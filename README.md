@@ -1,4 +1,5 @@
 ![Build Status][buildstatus]
+![Tested with Camel version][camelver]
 ![Project licence][licence]
 ![Egg Status][eggs]
 
@@ -6,7 +7,7 @@
 
 Some demos and tests for Apache Camel! Please enjoy!
 
-To be used with the articles and tutorials at [cleverbuilder.com][cb].
+These are intended to be used with the articles and tutorials at [tomd.xyz][tomd].
 
 See also my book, [Camel Step-by-Step: A beginner's guide to Apache Camel][camelsbs].
 
@@ -18,9 +19,10 @@ Thanks, Tom.
 - **examples** - Complete example applications which demonstrate specific use cases and platforms.
 - **spring-boot-tests** - Tests specifically using Spring Boot.
 
-[cb]: https://cleverbuilder.com
-[camelsbs]: https://cleverbuilder.com/camelstepbystep
+[tomd]: https://tomd.xyz
+[camelsbs]: https://tomd.xyz/camelstepbystep
 [buildstatus]: https://api.travis-ci.org/monodot/camel-demos.svg?branch=master
+[camelver]: https://img.shields.io/badge/dynamic/xml?label=Tested%20with%20Apache%20Camel&query=%2F%2A%5Blocal-name%28%29%3D%27project%27%5D%2F%2A%5Blocal-name%28%29%3D%27properties%27%5D%2F%2A%5Blocal-name%28%29%3D%27camel.version%27%5D&url=https%3A%2F%2Fraw.githubusercontent.com%2Fmonodot%2Fcamel-demos%2Fmaster%2Fparent%2Fpom.xml&color=orange
 [licence]: https://img.shields.io/github/license/monodot/camel-demos.svg
 [eggs]: https://img.shields.io/badge/eggs-poached-yellow.svg
 
