@@ -2,27 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
-        <groupId>xyz.tomd.demos.camel</groupId>
         <artifactId>spring-boot-examples</artifactId>
+        <groupId>xyz.tomd.demos.camel</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>spring-boot-example-mongodb</artifactId>
-    <name>Tom D :: Camel Demos :: Spring Boot Examples :: MongoDB</name>
-    <description>A Camel Spring Boot app for connecting to Mongo</description>
+    <artifactId>spring-boot-example-multiple-contexts</artifactId>
+    <name>Tom D :: Camel Demos :: Spring Boot Examples :: File Upload</name>
+    <description>A Camel Spring Boot app for uploading files</description>
 
-    <properties>
-<!--
-        &lt;!&ndash; Camel 2.21 == Spring Boot 1.5.10 &ndash;&gt;
-        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-        <camel.version>2.21.0</camel.version>
--->
-    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -51,51 +42,28 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
+            <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Provides a RestConsumerFactory -->
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-servlet-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-swagger-java-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-jackson-starter</artifactId>
-        </dependency>
-
-        <!-- For using Camel Mongo component -->
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-mongodb-starter</artifactId>
-        </dependency>
-
-        <!-- For using Spring Data -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
-        </dependency>
-
-        <!-- Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <artifactId>spring-boot-starter-artemis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test-spring</artifactId>
-            <scope>test</scope>
+            <artifactId>camel-jms</artifactId>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-jms-server</artifactId>
+        </dependency>
+
+        <!-- So we can have a nice monitoring console -->
+        <dependency>
+            <groupId>io.hawt</groupId>
+            <artifactId>hawtio-springboot</artifactId>
+            <version>${hawtio.version}</version>
         </dependency>
     </dependencies>
 
@@ -113,6 +81,7 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
 
     </build>

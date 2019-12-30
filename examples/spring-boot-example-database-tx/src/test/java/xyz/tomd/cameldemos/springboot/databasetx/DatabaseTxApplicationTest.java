@@ -43,7 +43,7 @@ public class DatabaseTxApplicationTest {
         try {
             template.sendBody("direct:start", "");
         } catch (CamelExecutionException ex) {
-            // Do nothing. We expect this.
+            // Do nothing. We expect there to be an exception.
         }
 
         mockEndpoint.expectedMessageCount(1);

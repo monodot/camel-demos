@@ -37,6 +37,7 @@ public class CamelMongoComponentRouteBuilder extends RouteBuilder {
                             CatPojo cat = new CatPojo();
                             cat.setName(document.getString("name"));
                             cat.setCutenessScore(document.getInteger("cutenessScore"));
+                            //noinspection unchecked
                             cat.setEnemies(document.get("enemies", List.class));
                             cat.setFurColour(document.getString("furColour"));
 
@@ -71,7 +72,7 @@ public class CamelMongoComponentRouteBuilder extends RouteBuilder {
                         // Create our update criteria as a Bson object
                         // To facilitate creating filter objects, Java driver provides the Filters
                         // helper:
-                        // com.mongodb.client.model.Filters
+                        // com.mongodb.client.model.Filters\
                         // Here we're filtering on both name AND owner
                         Bson filter = Filters.and(
                                 Filters.eq("name", cat.getName()),
@@ -99,7 +100,12 @@ public class CamelMongoComponentRouteBuilder extends RouteBuilder {
                 .to("mongodb3:mymongoclient" +
                         "?database={{mongo.database}}" +
                         "&collection={{mongo.collection}}" +
-                        "&operation=update");
+                        "&operation=update")
+                .split().body().process(new Processor() {
+            public void process(Exchange exchange) throws Exception {
+
+            }
+        }).end();
     }
 
 }

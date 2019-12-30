@@ -6,23 +6,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>xyz.tomd.demos.camel</groupId>
         <artifactId>spring-boot-examples</artifactId>
+        <groupId>xyz.tomd.demos.camel</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
-    <artifactId>spring-boot-example-mongodb</artifactId>
-    <name>Tom D :: Camel Demos :: Spring Boot Examples :: MongoDB</name>
-    <description>A Camel Spring Boot app for connecting to Mongo</description>
-
-    <properties>
-<!--
-        &lt;!&ndash; Camel 2.21 == Spring Boot 1.5.10 &ndash;&gt;
-        <spring-boot.version>1.5.10.RELEASE</spring-boot.version>
-        <camel.version>2.21.0</camel.version>
--->
-    </properties>
+    <artifactId>spring-boot-example-call-rest-service</artifactId>
+    <name>Tom D :: Camel Demos :: Spring Boot Examples :: Call REST Service</name>
+    <description>Invoke a RESTful service from Camel</description>
 
     <dependencyManagement>
         <dependencies>
@@ -36,7 +28,7 @@
             </dependency>
             <!-- Camel BOM -->
             <dependency>
-                <groupId>org.apache.camel</groupId>
+                <groupId>org.apache.camel.springboot</groupId>
                 <artifactId>camel-spring-boot-dependencies</artifactId>
                 <version>${camel.version}</version>
                 <type>pom</type>
@@ -55,30 +47,9 @@
             <artifactId>camel-spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- Provides a RestConsumerFactory -->
         <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-servlet-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-swagger-java-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-jackson-starter</artifactId>
-        </dependency>
-
-        <!-- For using Camel Mongo component -->
-        <dependency>
-            <groupId>org.apache.camel.springboot</groupId>
-            <artifactId>camel-mongodb-starter</artifactId>
-        </dependency>
-
-        <!-- For using Spring Data -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-http</artifactId>
         </dependency>
 
         <!-- Test -->
@@ -97,6 +68,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>

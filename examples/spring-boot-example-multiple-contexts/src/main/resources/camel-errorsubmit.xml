@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+    <routeContext xmlns="http://camel.apache.org/schema/spring"
+                  id="errorSubmit">
+
+        <route id="error-submit-route">
+            <from uri="direct:submit-error"/>
+            <setBody>
+                <constant>An error happened!</constant>
+            </setBody>
+            <log message="Logging an error on a message queue"/>
+            <to uri="jms:queue:error.queue"/>
+        </route>
+
+    </routeContext>
+
+
+</beans>

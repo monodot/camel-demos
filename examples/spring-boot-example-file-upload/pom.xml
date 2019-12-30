@@ -6,14 +6,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
+        <groupId>xyz.tomd.demos.camel</groupId>
         <artifactId>spring-boot-examples</artifactId>
-        <groupId>com.cleverbuilder.cameldemos</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
 
     <artifactId>spring-boot-example-file-upload</artifactId>
-    <name>Tom D :: Camel Demos :: Spring Boot File Upload</name>
+    <name>Tom D :: Camel Demos :: Spring Boot Examples :: File Upload</name>
     <description>A Camel Spring Boot app for uploading files</description>
 
     <dependencyManagement>

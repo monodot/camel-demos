@@ -23,8 +23,7 @@ import xyz.tomd.cameldemos.springboot.mongodb.model.CatPojo;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * This test will not run by default when running `mvn clean test`.
@@ -74,11 +73,11 @@ public class CamelMongoDbApplicationIT {
         catsCollection.insertOne(cat);
 
         // Hit the endpoint with an empty body and get the response
-        List<CatPojo> response = template.requestBody("direct:getAllUsingCamelComponent",
+        List response = template.requestBody("direct:getAllUsingCamelComponent",
                 null, List.class);
 
         // Response should contain one CatPojo -- our friend Willybur
-        assertEquals("Willybur", response.get(0).getName());
+        assertEquals("Willybur", ((CatPojo) response.get(0)).getName());
     }
 
     /**
@@ -96,12 +95,11 @@ public class CamelMongoDbApplicationIT {
         catsCollection.insertOne(cat);
 
         // Hit the endpoint with an empty body and get the response
-        List<CatPojo> response = template.requestBody("direct:getAllUsingSpringData",
+        List response = template.requestBody("direct:getAllUsingSpringData",
                 null, List.class);
 
         // Response should contain one CatPojo -- our friend Fenella
-        assertEquals("Fenella", response.get(0).getName());
-        assertEquals(78, response.get(0).getCutenessScore(), 0);
+        assertEquals(78, ((CatPojo) response.get(0)).getCutenessScore(), 0);
     }
 
     @Test
@@ -125,13 +123,13 @@ public class CamelMongoDbApplicationIT {
         // Hit the endpoint to search for all cats with enemy Snowdrop
         // Under the hood this will create a query:
         // "Created query Query: { "enemies" : "Snowdrop"}, Fields: null, Sort: null"
-        List<CatPojo> response = template.requestBodyAndHeader("direct:getByOwnerUsingSpringData",
+        List response = template.requestBodyAndHeader("direct:getByOwnerUsingSpringData",
                 null,
                 "enemy", "Snowdrop",
                 List.class);
 
         // Response should contain one CatPojo -- our friend Fenella
-        assertEquals("Fenella", response.get(0).getName());
+        assertEquals("Fenella", ((CatPojo) response.get(0)).getName());
     }
 
 
