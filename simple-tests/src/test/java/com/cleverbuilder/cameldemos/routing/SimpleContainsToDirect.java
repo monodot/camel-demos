@@ -15,11 +15,27 @@ public class SimpleContainsToDirect extends CamelTestSupport {
     @EndpointInject(uri = "mock:output")
     private MockEndpoint mockOutput;
 
+    @EndpointInject(uri = "mock:final")
+    private MockEndpoint mockFinal;
+
+
     @Test
     public void testBodyContains() throws Exception {
         mockOutput.expectedMessageCount(1);
+        mockFinal.expectedMessageCount(1);
 
         template.sendBody("direct:start", "Cilla Black");
+
+        assertMockEndpointsSatisfied();
+    }
+
+
+    @Test
+    public void thatThatOtherwiseDoesntFuckThingsUp() throws Exception {
+//        mockOutput.expectedMessageCount(1);
+        mockFinal.expectedMessageCount(1);
+
+        template.sendBody("direct:start", "Bobby");
 
         assertMockEndpointsSatisfied();
     }
@@ -34,8 +50,14 @@ public class SimpleContainsToDirect extends CamelTestSupport {
                         .log("Received a message!")
                         .choice()
                             .when(simple("${body} contains 'Cilla Black'"))
-                            .to("direct:process-file")
-                        .endChoice();
+                                .to("direct:process-file")
+                            .when(simple("${body} contains 'Priscilla White'"))
+                                .log("Priscilla White")
+                            .otherwise()
+                                .log("None of the above")
+                        .end()
+                        .log("Finished!")
+                        .to("mock:final");
 
                 from("direct:process-file")
                         .to("mock:output");

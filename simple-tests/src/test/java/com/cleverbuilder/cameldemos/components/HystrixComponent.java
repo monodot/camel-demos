@@ -54,7 +54,8 @@ public class HystrixComponent extends CamelTestSupport {
                                 exchange.getIn().setHeader("EndpointHystrix", "mock:hystrix");
                             }
                         })
-                        .hystrix()
+//                        .hystrix()
+                        .circuitBreaker()
                             .toD("${header.EndpointHystrix}")
                         .onFallbackViaNetwork()
                             .process(new Processor() {
@@ -65,7 +66,7 @@ public class HystrixComponent extends CamelTestSupport {
                                 }
                             })
                             .toD("${header.EndpointFallback}")
-                        .end()
+                        .endCircuitBreaker()
                         .to("mock:result");
 
 

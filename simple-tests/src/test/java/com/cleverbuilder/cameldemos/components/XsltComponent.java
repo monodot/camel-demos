@@ -7,9 +7,9 @@ import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
-import static org.apache.camel.builder.xml.XPathBuilder.xpath;
-
 import java.util.concurrent.TimeUnit;
+
+import static org.apache.camel.language.xpath.XPathBuilder.xpath;
 
 /**
  * Created by tdonohue on 22/04/2018.
@@ -24,7 +24,7 @@ public class XsltComponent extends CamelTestSupport {
         mockOutput.expectedMessageCount(1);
 
         // How to implement an XPath based assertion (import this static xpath method)
-        mockOutput.expectedMessagesMatches(xpath("count(//PersonImpl) = 3"));
+        mockOutput.expectedMessagesMatches(xpath("count(//Person) = 3"));
 
         template.sendBody("direct:start", "<staff><person>Jane</person><person>Alex</person><person>Steve</person></staff>");
 

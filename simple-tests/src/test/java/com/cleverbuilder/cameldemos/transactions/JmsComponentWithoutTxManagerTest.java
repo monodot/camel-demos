@@ -5,7 +5,7 @@ import org.apache.camel.CamelException;
 import org.apache.camel.FailedToCreateRouteException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
-import org.apache.camel.impl.JndiRegistry;
+import org.apache.camel.spi.Registry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
@@ -98,9 +98,7 @@ public class JmsComponentWithoutTxManagerTest extends CamelTestSupport {
      * without any transaction manager.
      */
     @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        JndiRegistry registry = super.createRegistry();
-
+    protected void bindToRegistry(Registry registry) throws Exception {
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
         activeMQConnectionFactory.setBrokerURL("vm://localhost?broker.persistent=false&broker.useJmx=false");
 
@@ -109,8 +107,6 @@ public class JmsComponentWithoutTxManagerTest extends CamelTestSupport {
 
         // Add the activemq component into the registry so we can use it in our routes
         registry.bind("jms", jmsComponent);
-
-        return registry;
     }
 
 }

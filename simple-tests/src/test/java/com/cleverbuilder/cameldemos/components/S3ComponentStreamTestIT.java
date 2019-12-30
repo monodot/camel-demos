@@ -1,15 +1,15 @@
 package com.cleverbuilder.cameldemos.components;
 
-import com.amazonaws.auth.AWSCredentials;
-import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.auth.DefaultAWSCredentialsProviderChain;
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.impl.JndiRegistry;
+import org.apache.camel.spi.Registry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -20,22 +20,17 @@ import java.util.concurrent.TimeUnit;
  * NB: This is a functional test and will attempt to connect to S3 for real, ken? No mocks.
  *
  * To run this test:
- * $ mvn clean test -Dtest=S3ComponentStreamTest -Daws.accesskey=XXXX -Daws.secretkey=YYYY
+ * $ mvn clean test -Dtest=S3ComponentStreamTestIT -Daws.accessKeyId=XXXX -Daws.secretKey=YYYY
  * $ curl http://localhost:8111/stream-me-a-file
  */
-public class S3ComponentStreamTest extends CamelTestSupport {
+public class S3ComponentStreamTestIT extends CamelTestSupport {
 
-    private String accessKey;
-    private String secretKey;
     private String bucketName;
     private String objectKey;
-
 
     @Override
     @Before
     public void setUp() throws Exception {
-        accessKey = System.getProperty("aws.accesskey");
-        secretKey = System.getProperty("aws.secretkey");
         bucketName = System.getProperty("aws.bucketname");
         objectKey = System.getProperty("aws.objectkey");
 
@@ -43,15 +38,19 @@ public class S3ComponentStreamTest extends CamelTestSupport {
     }
 
     @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        JndiRegistry registry = super.createRegistry();
+    protected void bindToRegistry(Registry registry) throws Exception {
 
-        AWSCredentials awsCredentials = new
-                BasicAWSCredentials(accessKey, secretKey);
-        AmazonS3 client = new AmazonS3Client(awsCredentials);
+        AmazonS3 client = AmazonS3ClientBuilder.standard()
+
+                // This will look for credentials in env vars (AWS_ACCESS_KEY_ID,..)
+                // Java system properties aws.accessKeyId/aws.secretKey,
+                // or ~/.aws/credentials
+                // See: https://docs.aws.amazon.com/sdk-for-java/v1/developer-guide/credentials.html
+                .withCredentials(new DefaultAWSCredentialsProviderChain())
+
+                .build();
+
         registry.bind("client", client);
-
-        return registry;
     }
 
     @Ignore

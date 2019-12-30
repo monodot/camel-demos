@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.cleverbuilder.cameldemos</groupId>
-        <artifactId>parent</artifactId>
+        <groupId>xyz.tomd.demos.camel</groupId>
+        <artifactId>camel-demos-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../parent</relativePath>
     </parent>
@@ -20,11 +20,16 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <memory>512</memory>
         <commons-lang.version>3.7</commons-lang.version>
+
+        <byteman.version>4.0.8</byteman.version>
+        <!-- Required by the `byteman` profile when running under Java 1.8; you should replace this property with your local path to tools.jar -->
+        <tools.jar>/usr/lib/jvm/java-1.8.0/lib/tools.jar</tools.jar>
     </properties>
 
     <dependencyManagement>
+<!--
         <dependencies>
-            <!-- Camel BOM -->
+            &lt;!&ndash; Camel BOM &ndash;&gt;
             <dependency>
                 <groupId>org.apache.camel</groupId>
                 <artifactId>camel-parent</artifactId>
@@ -33,6 +38,7 @@
                 <type>pom</type>
             </dependency>
         </dependencies>
+-->
     </dependencyManagement>
 
     <dependencies>
@@ -41,6 +47,11 @@
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-core</artifactId>
         </dependency>
+        <!-- From Camel 3.x, the APIs are moved into the camel-api dependency -->
+        <!--<dependency>-->
+            <!--<groupId>org.apache.camel</groupId>-->
+            <!--<artifactId>camel-api</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -96,6 +107,10 @@
         </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
+            <artifactId>camel-undertow</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
             <artifactId>camel-servlet</artifactId>
         </dependency>
         <!-- For consuming HTTP/REST -->
@@ -125,7 +140,7 @@
 
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-quartz2</artifactId>
+            <artifactId>camel-quartz</artifactId>
         </dependency>
 
         <!-- For JAXB -->
@@ -147,17 +162,27 @@
 
         <dependency>
             <groupId>org.apache.camel</groupId>
-            <artifactId>camel-aws</artifactId>
+            <artifactId>camel-aws-s3</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-sql</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <scope>test</scope>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-main</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-xpath</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-mail</artifactId>
         </dependency>
 
 
@@ -169,6 +194,11 @@
         </dependency>
 
         <!-- testing -->
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test</artifactId>
@@ -255,6 +285,39 @@
             </exclusions>
         </dependency>
 
+        <!-- Byteman dependencies so we can do code instrumentation -->
+        <dependency>
+            <groupId>org.jboss.byteman</groupId>
+            <artifactId>byteman</artifactId>
+            <scope>test</scope>
+            <version>${byteman.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.byteman</groupId>
+            <artifactId>byteman-submit</artifactId>
+            <scope>test</scope>
+            <version>${byteman.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.byteman</groupId>
+            <artifactId>byteman-install</artifactId>
+            <scope>test</scope>
+            <version>${byteman.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.byteman</groupId>
+            <artifactId>byteman-bmunit</artifactId>
+            <scope>test</scope>
+            <version>${byteman.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.6</version>
+            <scope>system</scope>
+            <systemPath>${tools.jar}</systemPath>
+        </dependency>
+
         <!-- All Spring Boot stuff goes beyond here -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -303,6 +366,11 @@
                 <configuration>
                     <forkMode>once</forkMode>
                     <argLine>-Xms${memory}m -Xmx${memory}m</argLine>
+                    <!-- Exclude Byteman and Performance tests from the default profile -->
+                    <excludes>
+                        <exclude>**/*BMTest.java</exclude>
+                        <exclude>**/*PT.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
 
@@ -331,5 +399,26 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>byteman</id>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.12.4</version>
+                        <configuration>
+                            <includes>
+                                <include>**/*BMTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>

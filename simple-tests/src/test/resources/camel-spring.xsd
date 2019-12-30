@@ -3,7 +3,7 @@
   <xs:element name="aggregate" type="tns:aggregateDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Aggregates many message into a single message
+Aggregates many messages into a single message
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -12,6 +12,14 @@ Aggregates many message into a single message
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
 Does processing before and/or after the route is completed
+      ]]></xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="apiKey" type="tns:restSecurityApiKey">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"><![CDATA[
+Rest security basic auth definition
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -28,7 +36,7 @@ protocols.
   <xs:element name="avro" type="tns:avroDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Avro data format is used for serialization and deserialization of message
+The Avro data format is used for serialization and deserialization of messages
 using Apache Avro binary dataformat.
       ]]></xs:documentation>
     </xs:annotation>
@@ -46,6 +54,14 @@ The Barcode data format is used for creating barccode images (such as QR-Code)
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
 The Base64 data format is used for base64 encoding and decoding.
+      ]]></xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="basicAuth" type="tns:restSecurityBasicAuth">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"><![CDATA[
+Rest security basic auth definition
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -88,7 +104,7 @@ delimited, or fixed length formats).
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
 The Bindy data format is used for working with flat payloads (such as CSV,
-delimited, fixed length formats, or FIX message).
+delimited, fixed length formats, or FIX messages).
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -126,7 +142,7 @@ POJO back to XML payload.
   <xs:element name="choice" type="tns:choiceDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes message based on a series of predicates
+Routes messages based on a series of predicates
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -147,6 +163,10 @@ unique key), which can be used to retrieve the message content at a later time.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
+
+  <xs:element name="combinedServiceDiscovery" type="tns:combinedServiceCallServiceDiscoveryConfiguration"/>
+
+  <xs:element name="combinedServiceFilter" type="tns:combinedServiceCallServiceFilterConfiguration"/>
 
   <xs:element name="constant" type="tns:constantExpression">
     <xs:annotation>
@@ -186,7 +206,7 @@ Converts the message body to another type
   <xs:element name="crypto" type="tns:cryptoDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Crypto data format is used for encrypting and decrypting of message using Java
+Crypto data format is used for encrypting and decrypting of messages using Java
 Cryptographic Extension.
       ]]></xs:documentation>
     </xs:annotation>
@@ -282,7 +302,7 @@ Marks the beginning of a try, catch, finally block
   <xs:element name="dynamicRouter" type="tns:dynamicRouterDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes message based on dynamic rules
+Routes messages based on dynamic rules
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -377,7 +397,7 @@ to/from XML.
   <xs:element name="filter" type="tns:filterDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Filter out message based using a predicate
+Filter out messages based using a predicate
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -471,7 +491,7 @@ To use a Camel Message header in expressions or predicates.
   <xs:element name="hessian" type="tns:hessianDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Hessian data format is used for marshalling and unmarshalling message using
+Hessian data format is used for marshalling and unmarshalling messages using
 Cauchos Hessian format.
       ]]></xs:documentation>
     </xs:annotation>
@@ -505,7 +525,7 @@ Hystrix Circuit Breaker EIP configuration
   <xs:element name="ical" type="tns:icalDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The iCal dataformat is used for working with iCalendar message.
+The iCal dataformat is used for working with iCalendar messages.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -513,7 +533,7 @@ The iCal dataformat is used for working with iCalendar message.
   <xs:element name="idempotentConsumer" type="tns:idempotentConsumerDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Filters out duplicate message
+Filters out duplicate messages
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -555,7 +575,7 @@ Intercepts a message at each step in the route
   <xs:element name="interceptFrom" type="tns:interceptFromDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Intercepts incoming message
+Intercepts incoming messages
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -563,7 +583,7 @@ Intercepts incoming message
   <xs:element name="interceptSendToEndpoint" type="tns:interceptSendToEndpointDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Intercepts message being sent to an endpoint
+Intercepts messages being sent to an endpoint
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -730,6 +750,14 @@ To use MVEL scripts in Camel expressions or predicates.
     </xs:annotation>
   </xs:element>
 
+  <xs:element name="oauth2" type="tns:restSecurityOAuth2">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"><![CDATA[
+Rest security OAuth2 definition
+      ]]></xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
   <xs:element name="ognl" type="tns:ognlExpression">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
@@ -825,7 +853,7 @@ Rest PATCH command
   <xs:element name="pgp" type="tns:pgpDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-PGP data format is used for encrypting and decrypting of message using Java
+PGP data format is used for encrypting and decrypting of messages using Java
 Cryptographic Extension and PGP.
       ]]></xs:documentation>
     </xs:annotation>
@@ -858,7 +886,7 @@ Defines a policy the route will use
   <xs:element name="pollEnrich" type="tns:pollEnrichDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Enriches message with data polled from a secondary resource
+Enriches messages with data polled from a secondary resource
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -963,7 +991,7 @@ Random load balancer
   <xs:element name="recipientList" type="tns:recipientListDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Routes message to a number of dynamically specified recipients (dynamic to)
+Routes messages to a number of dynamically specified recipients (dynamic to)
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1028,7 +1056,7 @@ Removes a named property from the message exchange
   <xs:element name="resequence" type="tns:resequenceDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Resequences (re-order) message based on an expression
+Resequences (re-order) messages based on an expression
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1044,7 +1072,7 @@ To specify the rest operation response headers using Swagger.
   <xs:element name="responseMessage" type="tns:restOperationResponseMsgDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-To specify the rest operation response message using Swagger.
+To specify the rest operation response messages using Swagger.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1199,7 +1227,7 @@ Enables sagas on the route
   <xs:element name="sample" type="tns:samplingDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Extract a sample of the message passing through a route
+Extract a sample of the messages passing through a route
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1219,6 +1247,22 @@ Executes a script from a language which does not change the message body.
       <xs:documentation xml:lang="en"><![CDATA[
 The XML Security data format facilitates encryption and decryption of XML
 payloads.
+      ]]></xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="security" type="tns:securityDefinition">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"><![CDATA[
+Rest security definition
+      ]]></xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:element name="securityDefinitions" type="tns:restSecuritiesDefinition">
+    <xs:annotation>
+      <xs:documentation xml:lang="en"><![CDATA[
+To configure rest security definitions.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1341,7 +1385,7 @@ To use Spring Expression Language (SpEL) in Camel expressions or predicates.
   <xs:element name="split" type="tns:splitDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Splits a single message into many sub-message.
+Splits a single message into many sub-messages.
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1401,7 +1445,7 @@ String data format is a textual based format that supports character encoding.
   <xs:element name="syslog" type="tns:syslogDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Syslog dataformat is used for working with RFC3164 and RFC5424 message
+The Syslog dataformat is used for working with RFC3164 and RFC5424 messages
 (logging and monitoring).
       ]]></xs:documentation>
     </xs:annotation>
@@ -1459,7 +1503,7 @@ Specifies that all steps after this node are processed asynchronously
   <xs:element name="thrift" type="tns:thriftDataFormat">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-The Thrift data format is used for serialization and deserialization of message
+The Thrift data format is used for serialization and deserialization of messages
 using Apache Thrift binary dataformat.
       ]]></xs:documentation>
     </xs:annotation>
@@ -1468,7 +1512,7 @@ using Apache Thrift binary dataformat.
   <xs:element name="throttle" type="tns:throttleDefinition">
     <xs:annotation>
       <xs:documentation xml:lang="en"><![CDATA[
-Controls the rate at which message are passed to the next node in the route
+Controls the rate at which messages are passed to the next node in the route
       ]]></xs:documentation>
     </xs:annotation>
   </xs:element>
@@ -1957,7 +2001,7 @@ Default value: 60000
         <xs:attribute name="retriesExhaustedLogLevel" type="tns:loggingLevel">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets the logging level to use for log message when retries have been exhausted.
+Sets the logging level to use for log messages when retries have been exhausted.
 Default value: ERROR
             ]]></xs:documentation>
           </xs:annotation>
@@ -1965,8 +2009,15 @@ Default value: ERROR
         <xs:attribute name="retryAttemptedLogLevel" type="tns:loggingLevel">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets the logging level to use for log message when retries are attempted.
+Sets the logging level to use for log messages when retries are attempted.
 Default value: DEBUG
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="retryAttemptedLogInterval" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets the interval for log messages when retries are attempted. Default value: 0
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -2299,8 +2350,8 @@ locations from this option.
             <xs:documentation xml:lang="en"><![CDATA[
 Encoding to use when loading properties file from the file system or classpath.
 If no encoding has been set, then the properties files is loaded using
-ISO-8859-1 encoding (latin-1) as documented by link
-java.util.Propertiesload(java.io.InputStream)
+ISO-8859-1 encoding (latin-1) as documented by
+java.util.Properties#load(java.io.InputStream)
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -2540,7 +2591,15 @@ is created in the java.io.tmpdir directory.
         <xs:attribute name="spoolChiper" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets a chiper name to use when spooling to disk to write with encryption. By
+Deprecated: Sets a chiper name to use when spooling to disk to write with
+encryption. By default the data is not encrypted.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="spoolCipher" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets a cipher name to use when spooling to disk to write with encryption. By
 default the data is not encrypted.
             ]]></xs:documentation>
           </xs:annotation>
@@ -2549,8 +2608,8 @@ default the data is not encrypted.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Threshold in bytes when overflow to disk is activated. The default threshold is
-link org.apache.camel.StreamCacheDEFAULT_SPOOL_THRESHOLD bytes (eg 128kb). Use
--1 to disable overflow to disk.
+org.apache.camel.StreamCache#DEFAULT_SPOOL_THRESHOLD bytes (eg 128kb). Use -1 to
+disable overflow to disk.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -2583,8 +2642,8 @@ be separated by comma.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets the buffer size to use when allocating in-memory buffers used for in-memory
-stream caches. The default size is link
-org.apache.camel.util.IOHelperDEFAULT_BUFFER_SIZE
+stream caches. The default size is
+org.apache.camel.util.IOHelper#DEFAULT_BUFFER_SIZE
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -3037,7 +3096,7 @@ Default value: false
         <xs:attribute name="completionSize" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Number of message aggregated before the aggregation is complete. This option
+Number of messages aggregated before the aggregation is complete. This option
 can be set as either a fixed value or using an Expression which allows you to
 evaluate a size dynamically - will use Integer as result. If both are set Camel
 will fallback to use the fixed value if the Expression result was null or 0.
@@ -3088,7 +3147,7 @@ timeout values or checker intervals. Default value: 1000
 Enables the batch completion mode where we aggregate from a
 org.apache.camel.BatchConsumer and aggregate the total number of exchanges the
 org.apache.camel.BatchConsumer has reported as total by checking the exchange
-property link org.apache.camel.ExchangeBATCH_COMPLETE when its complete. Default
+property org.apache.camel.Exchange#BATCH_COMPLETE when its complete. Default
 value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -3413,15 +3472,6 @@ Deprecated: Whether the message body is an array type. Default value: false
 
   <xs:complexType name="whenDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
-        <xs:anyAttribute namespace="##other" processContents="skip"/>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-
-  <xs:complexType abstract="true" name="expressionNode">
-    <xs:complexContent>
       <xs:extension base="tns:processorDefinition">
         <xs:sequence>
           <xs:choice>
@@ -3581,7 +3631,7 @@ check repository. The following syntax is supported: body - to aggregate the
 message body attachments - to aggregate all the message attachments headers - to
 aggregate all the message headers header:pattern - to aggregate all the message
 headers that matches the pattern. The pattern syntax is documented by: link
-EndpointHelpermatchPattern(String, String). You can specify multiple rules
+EndpointHelper#matchPattern(String, String). You can specify multiple rules
 separated by comma. For example to include the message body and all headers
 starting with foo body,header:foo. The syntax supports the following prefixes
 which can be used to specify include,exclude, or remove - to include (which is
@@ -3677,8 +3727,105 @@ data formats marshalling to JSon etc. Default value: false
 
   <xs:complexType name="delayDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:attribute name="executorServiceRef" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
@@ -3740,10 +3887,107 @@ reused.
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="noOutputExpressionNode">
+  <xs:complexType abstract="true" name="noOutputExpressionNode">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:anyAttribute namespace="##other" processContents="skip"/>
       </xs:extension>
     </xs:complexContent>
@@ -3828,8 +4072,105 @@ endpoint. Default value: false
 
   <xs:complexType name="filterDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:anyAttribute namespace="##other" processContents="skip"/>
       </xs:extension>
     </xs:complexContent>
@@ -3936,8 +4277,8 @@ HystrixCommandMetrics.getHealthCounts(). Default value: 50
         <xs:attribute name="circuitBreakerForceClosed" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If true the HystrixCircuitBreakerallowRequest() will always return true to allow
-requests regardless of the error percentage from
+If true the HystrixCircuitBreaker#allowRequest() will always return true to
+allow requests regardless of the error percentage from
 HystrixCommandMetrics.getHealthCounts(). The circuitBreakerForceOpen() property
 takes precedence so if it set to true this property does nothing. Default value:
 false
@@ -3994,9 +4335,9 @@ Default value: THREAD
         <xs:attribute name="executionIsolationThreadInterruptOnTimeout" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether the execution thread should attempt an interrupt (using link
-Futurecancel) when a thread times out. Applicable only when
-executionIsolationStrategy() == THREAD. Default value: true
+Whether the execution thread should attempt an interrupt (using Future#cancel)
+when a thread times out. Applicable only when executionIsolationStrategy() ==
+THREAD. Default value: true
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4004,7 +4345,7 @@ executionIsolationStrategy() == THREAD. Default value: true
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Time in milliseconds at which point the command will timeout and halt execution.
-If link executionIsolationThreadInterruptOnTimeout == true and the command is
+If executionIsolationThreadInterruptOnTimeout == true and the command is
 thread-isolated, the executing thread will be interrupted. If the command is
 semaphore-isolated and a HystrixObservableCommand, that command will get
 unsubscribed. Default value: 1000
@@ -4107,16 +4448,16 @@ HystrixRequestLog. Default value: true
         <xs:attribute name="corePoolSize" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Core thread-pool size that gets passed to link
-java.util.concurrent.ThreadPoolExecutorsetCorePoolSize(int). Default value: 10
+Core thread-pool size that gets passed to
+java.util.concurrent.ThreadPoolExecutor#setCorePoolSize(int). Default value: 10
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="maximumSize" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Maximum thread-pool size that gets passed to link
-ThreadPoolExecutorsetMaximumPoolSize(int). This is the maximum amount of
+Maximum thread-pool size that gets passed to
+ThreadPoolExecutor#setMaximumPoolSize(int). This is the maximum amount of
 concurrency that can be supported without starting to reject HystrixCommands.
 Please note that this setting only takes effect if you also set
 allowMaximumSizeToDivergeFromCoreSize. Default value: 10
@@ -4127,7 +4468,7 @@ allowMaximumSizeToDivergeFromCoreSize. Default value: 10
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Keep-alive time in minutes that gets passed to link
-ThreadPoolExecutorsetKeepAliveTime(long, TimeUnit). Default value: 1
+ThreadPoolExecutor#setKeepAliveTime(long, TimeUnit). Default value: 1
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4145,11 +4486,10 @@ the fly. For that, use queueSizeRejectionThreshold(). Default value: -1
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Queue size rejection threshold is an artificial max size at which rejections
-will occur even if link maxQueueSize has not been reached. This is done because
-the link maxQueueSize of a BlockingQueue can not be dynamically changed and we
-want to support dynamically changing the queue size that affects rejections.
-This is used by HystrixCommand when queuing a thread for execution. Default
-value: 5
+will occur even if maxQueueSize has not been reached. This is done because the
+maxQueueSize of a BlockingQueue can not be dynamically changed and we want to
+support dynamically changing the queue size that affects rejections. This is
+used by HystrixCommand when queuing a thread for execution. Default value: 5
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4280,8 +4620,105 @@ Refers to a Hystrix configuration to use for configuring the Hystrix EIP.
 
   <xs:complexType name="idempotentConsumerDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:attribute name="messageIdRepositoryRef" type="xs:string" use="required">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
@@ -4317,9 +4754,9 @@ state of the idempotent consumer will be a rollback. Default value: false
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets whether to skip duplicates or not. The default behavior is to skip
-duplicates. A duplicate message would have the Exchange property link
-org.apache.camel.ExchangeDUPLICATE_MESSAGE set to a link BooleanTRUE value. A
-none duplicate message will not have this property set. Default value: true
+duplicates. A duplicate message would have the Exchange property
+org.apache.camel.Exchange#DUPLICATE_MESSAGE set to a Boolean#TRUE value. A none
+duplicate message will not have this property set. Default value: true
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4415,8 +4852,8 @@ Set if validation is required for this input type. Default value: false
         <xs:attribute name="uri" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Intercept incoming message from the uri or uri pattern. If this option is not
-configured, then all incoming message is intercepted.
+Intercept incoming messages from the uri or uri pattern. If this option is not
+configured, then all incoming messages is intercepted.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -4702,7 +5139,7 @@ or open state
         <xs:attribute name="threshold" type="xs:int">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Number of previous failed message to use as threshold to move state from closed
+Number of previous failed messages to use as threshold to move state from closed
 to half-open or open state
             ]]></xs:documentation>
           </xs:annotation>
@@ -4758,8 +5195,105 @@ To refer to a custom logger instance to lookup from the registry.
 
   <xs:complexType name="loopDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:attribute name="copy" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
@@ -5076,8 +5610,9 @@ Define if Whitelist feature is enabled or not. Default value: true
 Define the allowed objects to be unmarshalled. You can specify the FQN class
 name of allowed objects, and you can use comma to separate multiple entries. It
 is also possible to use wildcards and regular expression which is based on the
-pattern defined by link org.apache.camel.util.EndpointHelpermatchPattern(String,
-String). Denied objects takes precedence over allowed objects.
+pattern defined by link
+org.apache.camel.util.EndpointHelper#matchPattern(String, String). Denied
+objects takes precedence over allowed objects.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -5087,8 +5622,9 @@ String). Denied objects takes precedence over allowed objects.
 Define the denied objects to be unmarshalled. You can specify the FQN class name
 of deined objects, and you can use comma to separate multiple entries. It is
 also possible to use wildcards and regular expression which is based on the
-pattern defined by link org.apache.camel.util.EndpointHelpermatchPattern(String,
-String). Denied objects takes precedence over allowed objects.
+pattern defined by link
+org.apache.camel.util.EndpointHelper#matchPattern(String, String). Denied
+objects takes precedence over allowed objects.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -5430,22 +5966,14 @@ registry.
 
   <xs:complexType name="fhirJsonDataFormat">
     <xs:complexContent>
-      <xs:extension base="tns:dataFormat">
+      <xs:extension base="tns:fhirDataformat">
         <xs:sequence/>
-        <xs:attribute name="fhirVersion" type="xs:string">
-          <xs:annotation>
-            <xs:documentation xml:lang="en"><![CDATA[
-The version of FHIR to use. Possible values are:
-DSTU2,DSTU2_HL7ORG,DSTU2_1,DSTU3,R4. Default value: DSTU3
-            ]]></xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
         <xs:anyAttribute namespace="##other" processContents="skip"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="fhirXmlDataFormat">
+  <xs:complexType abstract="true" name="fhirDataformat">
     <xs:complexContent>
       <xs:extension base="tns:dataFormat">
         <xs:sequence/>
@@ -5457,6 +5985,157 @@ DSTU2,DSTU2_HL7ORG,DSTU2_1,DSTU3,R4. Default value: DSTU3
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="prettyPrint" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets the pretty print flag, meaning that the parser will encode resources with
+human-readable spacing and newlines between elements instead of condensing
+output as much as possible. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="serverBaseUrl" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets the server's base URL used by this parser. If a value is set, resource
+references will be turned into relative references if they are provided as
+absolute URLs but have a base matching the given base.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="omitResourceId" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (default is false) the ID of any resources being encoded will not
+be included in the output. Note that this does not apply to contained resources,
+only to root resources. In other words, if this is set to true, contained
+resources will still have local IDs but the outer/containing ID will not have an
+ID. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="encodeElementsAppliesToResourceTypes">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If provided, tells the parse which resource types to apply link
+#setEncodeElements(Set) encode elements to. Any resource types not specified
+here will be encoded completely, with no elements excluded.
+            ]]></xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:list itemType="xs:string"/>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="encodeElementsAppliesToChildResourcesOnly" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (default is false), the values supplied to setEncodeElements(Set)
+will not be applied to the root resource (typically a Bundle), but will be
+applied to any sub-resources contained within it (i.e. search result resources
+in that bundle). Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="encodeElements">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If provided, specifies the elements which should be encoded, to the exclusion of
+all others. Valid values for this field would include: Patient - Encode patient
+and all its children Patient.name - Encode only the patient's name
+Patient.name.family - Encode only the patient's family name .text - Encode the
+text element on any resource (only the very first position may contain a
+wildcard) .(mandatory) - This is a special case which causes any mandatory
+fields (min 0) to be encoded
+            ]]></xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:list itemType="xs:string"/>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="dontEncodeElements">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If provided, specifies the elements which should NOT be encoded. Valid values
+for this field would include: Patient - Don't encode patient and all its
+children Patient.name - Don't encode the patient's name Patient.name.family -
+Don't encode the patient's family name .text - Don't encode the text element on
+any resource (only the very first position may contain a wildcard) DSTU2 note:
+Note that values including meta, such as Patient.meta will work for DSTU2
+parsers, but values with subelements on meta such as Patient.meta.lastUpdated
+will only work in DSTU3 mode.
+            ]]></xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:list itemType="xs:string"/>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="stripVersionsFromReferences" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (which is the default), resource references containing a version
+will have the version removed when the resource is encoded. This is generally
+good behaviour because in most situations, references from one resource to
+another should be to the resource by ID, not by ID and version. In some cases
+though, it may be desirable to preserve the version in resource links. In that
+case, this value should be set to false. This method provides the ability to
+globally disable reference encoding. If finer-grained control is needed, use
+setDontStripVersionsFromReferencesAtPaths(List). Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="overrideResourceIdWithBundleEntryFullUrl" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (which is the default), the Bundle.entry.fullUrl will override
+the Bundle.entry.resource's resource id if the fullUrl is defined. This behavior
+happens when parsing the source data into a Bundle object. Set this to false if
+this is not the desired behavior (e.g. the client code wishes to perform
+additional validation checks between the fullUrl and the resource id). Default
+value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="summaryMode" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (default is false) only elements marked by the FHIR specification
+as being summary elements will be included. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="suppressNarratives" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If set to true (default is false), narratives will not be included in the
+encoded values. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="dontStripVersionsFromReferencesAtPaths">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+If supplied value(s), any resource references at the specified paths will have
+their resource versions encoded instead of being automatically stripped during
+the encoding process. This setting has no effect on the parsing process. This
+method provides a finer-grained level of control than
+setStripVersionsFromReferences(Boolean) and any paths specified by this method
+will be encoded even if setStripVersionsFromReferences(Boolean) has been set to
+true (which is the default)
+            ]]></xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:list itemType="xs:string"/>
+          </xs:simpleType>
+        </xs:attribute>
+        <xs:anyAttribute namespace="##other" processContents="skip"/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="fhirXmlDataFormat">
+    <xs:complexContent>
+      <xs:extension base="tns:fhirDataformat">
+        <xs:sequence/>
         <xs:anyAttribute namespace="##other" processContents="skip"/>
       </xs:extension>
     </xs:complexContent>
@@ -5642,7 +6321,7 @@ option is to refer to the class which has JsonView annotations
             <xs:documentation xml:lang="en"><![CDATA[
 If you want to marshal a pojo to JSON, and the pojo has some fields with null
 values. And you want to skip these null values, you can set this option to
-NOT_NULL
+NON_NULL
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -5918,6 +6597,14 @@ Lookup and use the existing ObjectMapper with the given id when using Jackson.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
+        <xs:attribute name="useDefaultObjectMapper" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Whether to lookup and use default Jackson ObjectMapper from the registry.
+Default value: true
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
         <xs:attribute name="prettyPrint" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
@@ -5954,7 +6641,7 @@ option is to refer to the class which has JsonView annotations
             <xs:documentation xml:lang="en"><![CDATA[
 If you want to marshal a pojo to JSON, and the pojo has some fields with null
 values. And you want to skip these null values, you can set this option to
-NOT_NULL
+NON_NULL
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -6124,6 +6811,17 @@ MLCipher.TRIPLEDES. Default value: TRIPLEDES
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 A String used as passPhrase to encrypt/decrypt content. The passPhrase has to be
+provided. If no passPhrase is specified, a default passPhrase is used. The
+passPhrase needs to be put together in conjunction with the appropriate
+encryption algorithm. For example using TRIPLEDES the passPhase can be a Only
+another 24 Byte key
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="passPhraseByte" type="xs:base64Binary">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+A byte used as passPhrase to encrypt/decrypt content. The passPhrase has to be
 provided. If no passPhrase is specified, a default passPhrase is used. The
 passPhrase needs to be put together in conjunction with the appropriate
 encryption algorithm. For example using TRIPLEDES the passPhase can be a Only
@@ -6528,7 +7226,7 @@ character. Default value: \n
         <xs:attribute name="comment" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-The comment symbol. The default value is. Default value: #
+The comment symbol. The default value is #. Default value: #
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -7176,8 +7874,8 @@ path to be maintained in the zip file. Default value: false
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then sending message to the multicasts occurs concurrently. Note the
-caller thread will still wait until all message has been fully processed,
+If enabled then sending messages to the multicasts occurs concurrently. Note the
+caller thread will still wait until all messages has been fully processed,
 before it continues. Its only the sending and processing the replies from the
 multicasts which happens concurrently. Default value: false
             ]]></xs:documentation>
@@ -7261,7 +7959,7 @@ Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone message that should be send, or any custom logic
+can be used to deep-clone messages that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -7270,7 +7968,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-message. Multicast will by default not share unit of work between the parent
+messages. Multicast will by default not share unit of work between the parent
 exchange and each multicasted exchange. This means each sub exchange has its own
 individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -7639,6 +8337,13 @@ Sets the logging level to use for logging retry attempts
         ]]></xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="retryAttemptedLogInterval" type="xs:string">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+Sets the interval to use for logging retry attempts
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="logRetryAttempted" type="xs:string">
       <xs:annotation>
         <xs:documentation xml:lang="en"><![CDATA[
@@ -7831,7 +8536,7 @@ Sets a reference to use for lookup the policy in the registry.
 Timeout in millis when polling from the external service. The timeout has
 influence about the poll enrich behavior. It basically operations in three
 different modes: negative value - Waits until a message is available and then
-returns it. Warning that this method could block indefinitely if no message are
+returns it. Warning that this method could block indefinitely if no messages are
 available. 0 - Attempts to receive a message exchange immediately without
 waiting and returning null if a message exchange is not available yet. positive
 value - Attempts to receive a message exchange, waiting up to the given timeout
@@ -7941,8 +8646,8 @@ using the value false. The default value is ,. Default value: ,
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then sending message to the recipients occurs concurrently. Note the
-caller thread will still wait until all message has been fully processed,
+If enabled then sending messages to the recipients occurs concurrently. Note the
+caller thread will still wait until all messages has been fully processed,
 before it continues. Its only the sending and processing the replies from the
 recipients which happens concurrently. Default value: false
             ]]></xs:documentation>
@@ -8034,7 +8739,7 @@ bit of care. Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone message that should be send, or any custom logic
+can be used to deep-clone messages that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -8043,7 +8748,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-message. Recipient List will by default not share unit of work between the
+messages. Recipient List will by default not share unit of work between the
 parent exchange and each recipient exchange. This means each sub exchange has
 its own individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -8339,7 +9044,7 @@ Sets the capacity of the resequencer's inbound queue. Default value: 100
         <xs:attribute name="timeout" type="xs:long">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Sets minimum time to wait for missing elements (message). Default value: 1000
+Sets minimum time to wait for missing elements (messages). Default value: 1000
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -8368,7 +9073,7 @@ To use a custom comparator
         <xs:attribute name="rejectOld" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If true, throws an exception when message older than the last delivered message
+If true, throws an exception when messages older than the last delivered message
 are processed. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -8531,6 +9236,7 @@ Reference to the routes in the xml dsl
             <xs:element ref="tns:wireTap"/>
             <xs:element ref="tns:serviceCall"/>
           </xs:choice>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="routeProperty" type="tns:propertyDefinition"/>
         </xs:sequence>
         <xs:attribute name="autoStartup" type="xs:string">
           <xs:annotation>
@@ -8542,7 +9248,7 @@ Whether to auto start this route. Default value: true
         <xs:attribute name="delayer" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether to slow down processing message by a given delay in msec.
+Whether to slow down processing messages by a given delay in msec.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -8901,14 +9607,111 @@ Sets a reference to lookup for the comparator to use for sorting
 
   <xs:complexType name="splitDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:attribute name="parallelProcessing" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-If enabled then processing each splitted message occurs concurrently. Note the
-caller thread will still wait until all message has been fully processed,
-before it continues. Its only processing the sub message from the splitter
+If enabled then processing each splitted messages occurs concurrently. Note the
+caller thread will still wait until all messages has been fully processed,
+before it continues. Its only processing the sub messages from the splitter
 which happens concurrently. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -8917,7 +9720,7 @@ which happens concurrently. Default value: false
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets a reference to the AggregationStrategy to be used to assemble the replies
-from the splitted message, into a single outgoing message from the Splitter. By
+from the splitted messages, into a single outgoing message from the Splitter. By
 default Camel will use the original incoming message to the splitter (leave it
 unchanged). You can also use a POJO as the AggregationStrategy
             ]]></xs:documentation>
@@ -8955,16 +9758,16 @@ have to enable that option as well.
             <xs:documentation xml:lang="en"><![CDATA[
 When in streaming mode, then the splitter splits the original message on-demand,
 and each splitted message is processed one by one. This reduces memory usage as
-the splitter do not split all the message first, but then we do not know the
-total size, and therefore the link org.apache.camel.ExchangeSPLIT_SIZE is empty.
-In non-streaming mode (default) the splitter will split each message first, to
-know the total size, and then process each message one by one. This requires to
-keep all the splitted message in memory and therefore requires more memory. The
-total size is provided in the link org.apache.camel.ExchangeSPLIT_SIZE header.
-The streaming mode also affects the aggregation behavior. If enabled then Camel
-will process replies out-of-order, eg in the order they come back. If disabled,
-Camel will process replies in the same order as the message was splitted.
-Default value: false
+the splitter do not split all the messages first, but then we do not know the
+total size, and therefore the org.apache.camel.Exchange#SPLIT_SIZE is empty. In
+non-streaming mode (default) the splitter will split each message first, to know
+the total size, and then process each message one by one. This requires to keep
+all the splitted messages in memory and therefore requires more memory. The
+total size is provided in the org.apache.camel.Exchange#SPLIT_SIZE header. The
+streaming mode also affects the aggregation behavior. If enabled then Camel will
+process replies out-of-order, eg in the order they come back. If disabled, Camel
+will process replies in the same order as the messages was splitted. Default
+value: false
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -8986,7 +9789,7 @@ value: false
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets a total timeout specified in millis, when using parallel processing. If the
-Splitter hasn't been able to split and process all the sub message within the
+Splitter hasn't been able to split and process all the sub messages within the
 given timeframe, then the timeout triggers and the Splitter breaks out and
 continues. Notice if you provide a TimeoutAwareAggregationStrategy then the
 timeout method is invoked before breaking out. If the timeout is reached with
@@ -9000,7 +9803,7 @@ bit of care. Default value: 0
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone message that should be send, or any custom logic
+can be used to deep-clone messages that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -9009,7 +9812,7 @@ needed before the exchange is send.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Shares the org.apache.camel.spi.UnitOfWork with the parent and each of the sub
-message. Splitter will by default not share unit of work between the parent
+messages. Splitter will by default not share unit of work between the parent
 exchange and each splitted exchange. This means each splitted exchange has its
 own individual unit of work. Default value: false
             ]]></xs:documentation>
@@ -9204,8 +10007,106 @@ rejection handler. Is by default true. Default value: true
 
   <xs:complexType name="throttleDefinition">
     <xs:complexContent>
-      <xs:extension base="tns:expressionNode">
-        <xs:sequence/>
+      <xs:extension base="tns:processorDefinition">
+        <xs:sequence>
+          <xs:choice>
+            <xs:element ref="tns:expressionDefinition"/>
+            <xs:element ref="tns:constant"/>
+            <xs:element ref="tns:el"/>
+            <xs:element ref="tns:exchangeProperty"/>
+            <xs:element ref="tns:groovy"/>
+            <xs:element ref="tns:header"/>
+            <xs:element ref="tns:jxpath"/>
+            <xs:element ref="tns:javaScript"/>
+            <xs:element ref="tns:jsonpath"/>
+            <xs:element ref="tns:language"/>
+            <xs:element ref="tns:method"/>
+            <xs:element ref="tns:mvel"/>
+            <xs:element ref="tns:ognl"/>
+            <xs:element ref="tns:php"/>
+            <xs:element ref="tns:python"/>
+            <xs:element ref="tns:ref"/>
+            <xs:element ref="tns:ruby"/>
+            <xs:element ref="tns:simple"/>
+            <xs:element ref="tns:spel"/>
+            <xs:element ref="tns:sql"/>
+            <xs:element ref="tns:terser"/>
+            <xs:element ref="tns:tokenize"/>
+            <xs:element ref="tns:xtokenize"/>
+            <xs:element ref="tns:xpath"/>
+            <xs:element ref="tns:xquery"/>
+          </xs:choice>
+          <xs:element minOccurs="0" name="correlationExpression" type="tns:expressionSubElementDefinition"/>
+          <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element ref="tns:aop"/>
+            <xs:element ref="tns:aggregate"/>
+            <xs:element ref="tns:bean"/>
+            <xs:element ref="tns:doCatch"/>
+            <xs:element ref="tns:when"/>
+            <xs:element ref="tns:choice"/>
+            <xs:element ref="tns:otherwise"/>
+            <xs:element ref="tns:claimCheck"/>
+            <xs:element ref="tns:convertBodyTo"/>
+            <xs:element ref="tns:delay"/>
+            <xs:element ref="tns:dynamicRouter"/>
+            <xs:element ref="tns:enrich"/>
+            <xs:element ref="tns:filter"/>
+            <xs:element ref="tns:doFinally"/>
+            <xs:element ref="tns:hystrix"/>
+            <xs:element ref="tns:idempotentConsumer"/>
+            <xs:element ref="tns:inOnly"/>
+            <xs:element ref="tns:inOut"/>
+            <xs:element ref="tns:intercept"/>
+            <xs:element ref="tns:interceptFrom"/>
+            <xs:element ref="tns:interceptSendToEndpoint"/>
+            <xs:element ref="tns:loadBalance"/>
+            <xs:element ref="tns:log"/>
+            <xs:element ref="tns:loop"/>
+            <xs:element ref="tns:marshal"/>
+            <xs:element ref="tns:multicast"/>
+            <xs:element ref="tns:onCompletion"/>
+            <xs:element ref="tns:onException"/>
+            <xs:element ref="tns:onFallback"/>
+            <xs:element ref="tns:pipeline"/>
+            <xs:element ref="tns:policy"/>
+            <xs:element ref="tns:pollEnrich"/>
+            <xs:element ref="tns:process"/>
+            <xs:element ref="tns:recipientList"/>
+            <xs:element ref="tns:removeHeader"/>
+            <xs:element ref="tns:removeHeaders"/>
+            <xs:element ref="tns:removeProperties"/>
+            <xs:element ref="tns:removeProperty"/>
+            <xs:element ref="tns:resequence"/>
+            <xs:element ref="tns:rollback"/>
+            <xs:element ref="tns:route"/>
+            <xs:element ref="tns:routingSlip"/>
+            <xs:element ref="tns:saga"/>
+            <xs:element ref="tns:sample"/>
+            <xs:element ref="tns:script"/>
+            <xs:element ref="tns:setBody"/>
+            <xs:element ref="tns:setExchangePattern"/>
+            <xs:element ref="tns:setFaultBody"/>
+            <xs:element ref="tns:setHeader"/>
+            <xs:element ref="tns:setOutHeader"/>
+            <xs:element ref="tns:setProperty"/>
+            <xs:element ref="tns:sort"/>
+            <xs:element ref="tns:split"/>
+            <xs:element ref="tns:stop"/>
+            <xs:element ref="tns:threads"/>
+            <xs:element ref="tns:throttle"/>
+            <xs:element ref="tns:throwException"/>
+            <xs:element ref="tns:to"/>
+            <xs:element ref="tns:toD"/>
+            <xs:element ref="tns:transacted"/>
+            <xs:element ref="tns:transform"/>
+            <xs:element ref="tns:doTry"/>
+            <xs:element ref="tns:unmarshal"/>
+            <xs:element ref="tns:validate"/>
+            <xs:element ref="tns:whenSkipSendToEndpoint"/>
+            <xs:element ref="tns:wireTap"/>
+            <xs:element ref="tns:serviceCall"/>
+          </xs:choice>
+        </xs:sequence>
         <xs:attribute name="executorServiceRef" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
@@ -9329,6 +10230,14 @@ used to cache and reuse producers.
             <xs:documentation xml:lang="en"><![CDATA[
 Ignore the invalidate endpoint exception when try to create a producer with that
 endpoint. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="allowOptimisedComponents" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Whether to allow components to optimise toD if they are
+org.apache.camel.spi.SendDynamicAware. Default value: true
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -9494,7 +10403,7 @@ true
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Uses the Processor when preparing the org.apache.camel.Exchange to be send. This
-can be used to deep-clone message that should be send, or any custom logic
+can be used to deep-clone messages that should be send, or any custom logic
 needed before the exchange is send.
             ]]></xs:documentation>
           </xs:annotation>
@@ -9505,6 +10414,14 @@ needed before the exchange is send.
   </xs:complexType>
 
   <xs:complexType name="aggregatingServiceCallServiceDiscoveryConfiguration">
+    <xs:complexContent>
+      <xs:extension base="tns:combinedServiceCallServiceDiscoveryConfiguration">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="combinedServiceCallServiceDiscoveryConfiguration">
     <xs:complexContent>
       <xs:extension base="tns:serviceCallServiceDiscoveryConfiguration">
         <xs:sequence>
@@ -9686,7 +10603,8 @@ How to perform service lookup. Possible values: client, dns, environment. When
 using client, then the client queries the kubernetes master to obtain a list of
 active pods that provides the service, and then random (or round robin) select a
 pod. When using dns the service name is resolved as
-name.namespace.service.dnsDomain. When using environment then environment
+name.namespace.svc.dnsDomain. When using dnssrv the service name is resolved
+with SRV query for _._...svc... When using environment then environment
 variables are used to lookup the service. By default environment is used.
 Default value: environment
             ]]></xs:documentation>
@@ -9696,6 +10614,20 @@ Default value: environment
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets the DNS domain to use for DNS lookup.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="portName" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets the Port Name to use for DNS/DNSSRV lookup.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="portProtocol" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Sets the Port Protocol to use for DNS/DNSSRV lookup.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -9877,6 +10809,14 @@ Set the time unit for the timeout. Default value: SECONDS
 
   <xs:complexType name="chainedServiceCallServiceFilterConfiguration">
     <xs:complexContent>
+      <xs:extension base="tns:combinedServiceCallServiceFilterConfiguration">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="combinedServiceCallServiceFilterConfiguration">
+    <xs:complexContent>
       <xs:extension base="tns:serviceCallServiceFilterConfiguration">
         <xs:sequence>
           <xs:choice maxOccurs="unbounded" minOccurs="0">
@@ -9982,6 +10922,7 @@ Sets the Ribbon client name
           <xs:choice minOccurs="0">
             <xs:element ref="tns:cachingServiceDiscovery"/>
             <xs:element name="aggregatingServiceDiscovery" type="tns:aggregatingServiceCallServiceDiscoveryConfiguration"/>
+            <xs:element ref="tns:combinedServiceDiscovery"/>
             <xs:element ref="tns:consulServiceDiscovery"/>
             <xs:element ref="tns:dnsServiceDiscovery"/>
             <xs:element ref="tns:etcdServiceDiscovery"/>
@@ -9992,6 +10933,7 @@ Sets the Ribbon client name
           <xs:choice minOccurs="0">
             <xs:element ref="tns:blacklistServiceFilter"/>
             <xs:element name="chainedServiceFilter" type="tns:chainedServiceCallServiceFilterConfiguration"/>
+            <xs:element ref="tns:combinedServiceFilter"/>
             <xs:element ref="tns:customServiceFilter"/>
             <xs:element ref="tns:healthyServiceFilter"/>
             <xs:element ref="tns:passThroughServiceFilter"/>
@@ -10189,6 +11131,7 @@ ServiceCallConstants.SERVICE_PORT. Default value: CamelServiceCallServicePort
           <xs:choice minOccurs="0">
             <xs:element ref="tns:cachingServiceDiscovery"/>
             <xs:element name="aggregatingServiceDiscovery" type="tns:aggregatingServiceCallServiceDiscoveryConfiguration"/>
+            <xs:element ref="tns:combinedServiceDiscovery"/>
             <xs:element ref="tns:consulServiceDiscovery"/>
             <xs:element ref="tns:dnsServiceDiscovery"/>
             <xs:element ref="tns:etcdServiceDiscovery"/>
@@ -10199,6 +11142,7 @@ ServiceCallConstants.SERVICE_PORT. Default value: CamelServiceCallServicePort
           <xs:choice minOccurs="0">
             <xs:element ref="tns:blacklistServiceFilter"/>
             <xs:element name="chainedServiceFilter" type="tns:chainedServiceCallServiceFilterConfiguration"/>
+            <xs:element ref="tns:combinedServiceFilter"/>
             <xs:element ref="tns:customServiceFilter"/>
             <xs:element ref="tns:healthyServiceFilter"/>
             <xs:element ref="tns:passThroughServiceFilter"/>
@@ -10764,7 +11708,7 @@ Default value: false
         <xs:attribute name="xml" type="xs:boolean">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether the input is XML message. This option must be set to true if working
+Whether the input is XML messages. This option must be set to true if working
 with XML payloads. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
@@ -10939,6 +11883,7 @@ Name of header to use as input, instead of the message body
         <xs:sequence>
           <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:param"/>
           <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:responseMessage"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" ref="tns:security"/>
           <xs:choice>
             <xs:element ref="tns:to"/>
             <xs:element ref="tns:toD"/>
@@ -10989,9 +11934,20 @@ on a parent level The default value is auto. Default value: auto
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error message that do not bind to json / xml etc,
-as success message otherwise will do. This option will override what may be
+This allows to build custom error messages that do not bind to json / xml etc,
+as success messages otherwise will do. This option will override what may be
 configured on a parent level. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="clientRequestValidation" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Whether to enable validation of the client request to check whether the
+Content-Type and Accept headers from the client is supported by the Rest-DSL
+configuration of its consumes/produces settings. This can be turned on, to
+enable this check. In case of validation error, then HTTP Status codes 415 or
+406 is returned. The default value is false. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11235,6 +12191,24 @@ Sets the Swagger example
     </xs:attribute>
   </xs:complexType>
 
+  <xs:complexType name="securityDefinition">
+    <xs:sequence/>
+    <xs:attribute name="key" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+Key used to refer to this security definition
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="scopes" type="xs:string">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+The scopes to allow (separate multiple scopes by comma)
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
   <xs:complexType name="getVerbDefinition">
     <xs:complexContent>
       <xs:extension base="tns:verbDefinition">
@@ -11332,8 +12306,19 @@ canonical name if you want the input to be an array type.
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error message that do not bind to json / xml etc,
-as success message otherwise will do. Default value: false
+This allows to build custom error messages that do not bind to json / xml etc,
+as success messages otherwise will do. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="clientRequestValidation" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Whether to enable validation of the client request to check whether the
+Content-Type and Accept headers from the client is supported by the Rest-DSL
+configuration of its consumes/produces settings. This can be turned on, to
+enable this check. In case of validation error, then HTTP Status codes 415 or
+406 is returned. The default value is false. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11414,6 +12399,14 @@ used to override the generated host with this configured hostname
         ]]></xs:documentation>
       </xs:annotation>
     </xs:attribute>
+    <xs:attribute name="useXForwardHeaders" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+Whether to use X-Forward headers for Host and related setting. The default value
+is true. Default value: true
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
     <xs:attribute name="port" type="xs:string">
       <xs:annotation>
         <xs:documentation xml:lang="en"><![CDATA[
@@ -11471,10 +12464,10 @@ will by default use an auto assigned route id.
       <xs:annotation>
         <xs:documentation xml:lang="en"><![CDATA[
 Sets an CamelContext id pattern to only allow Rest APIs from rest services
-within CamelContext's which name matches the pattern. The pattern name refers to
-the CamelContext name, to match on the current CamelContext only. For any other
-value, the pattern uses the rules from link
-org.apache.camel.util.EndpointHelpermatchPattern(String, String)
+within CamelContext's which name matches the pattern. The pattern #name# refers
+to the CamelContext name, to match on the current CamelContext only. For any
+other value, the pattern uses the rules from link
+org.apache.camel.util.EndpointHelper#matchPattern(String, String)
         ]]></xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -11516,8 +12509,19 @@ Sets the binding mode to use. The default value is off. Default value: off
       <xs:annotation>
         <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error message that do not bind to json / xml etc,
-as success message otherwise will do. Default value: false
+This allows to build custom error messages that do not bind to json / xml etc,
+as success messages otherwise will do. Default value: false
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="clientRequestValidation" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+Whether to enable validation of the client request to check whether the
+Content-Type and Accept headers from the client is supported by the Rest-DSL
+configuration of its consumes/produces settings. This can be turned on, to
+enable this check. In case of validation error, then HTTP Status codes 415 or
+406 is returned. The default value is false. Default value: false
         ]]></xs:documentation>
       </xs:annotation>
     </xs:attribute>
@@ -11557,6 +12561,7 @@ to refer to an existing data format instance.
     <xs:complexContent>
       <xs:extension base="tns:optionalIdentifiedDefinition">
         <xs:sequence>
+          <xs:element minOccurs="0" ref="tns:securityDefinitions"/>
           <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element ref="tns:verb"/>
             <xs:element ref="tns:delete"/>
@@ -11612,9 +12617,20 @@ on a parent level The default value is auto. Default value: auto
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Whether to skip binding on output if there is a custom HTTP error code header.
-This allows to build custom error message that do not bind to json / xml etc,
-as success message otherwise will do. This option will override what may be
+This allows to build custom error messages that do not bind to json / xml etc,
+as success messages otherwise will do. This option will override what may be
 configured on a parent level. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="clientRequestValidation" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+Whether to enable validation of the client request to check whether the
+Content-Type and Accept headers from the client is supported by the Rest-DSL
+configuration of its consumes/produces settings. This can be turned on, to
+enable this check. In case of validation error, then HTTP Status codes 415 or
+406 is returned. The default value is false. Default value: false
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11633,6 +12649,105 @@ value: false
 Whether to include or exclude the VerbDefinition in API documentation. This
 option will override what may be configured on a parent level The default value
 is true. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="restSecuritiesDefinition">
+    <xs:sequence>
+      <xs:choice maxOccurs="unbounded" minOccurs="0">
+        <xs:element ref="tns:apiKey"/>
+        <xs:element ref="tns:basicAuth"/>
+        <xs:element ref="tns:oauth2"/>
+      </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="restSecurityApiKey">
+    <xs:complexContent>
+      <xs:extension base="tns:restSecurityDefinition">
+        <xs:sequence/>
+        <xs:attribute name="name" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+The name of the header or query parameter to be used.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="inHeader" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+To use header as the location of the API key. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="inQuery" type="xs:boolean">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+To use query parameter as the location of the API key. Default value: false
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType abstract="true" name="restSecurityDefinition">
+    <xs:sequence/>
+    <xs:attribute name="key" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+Key used to refer to this security definition
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="description" type="xs:string">
+      <xs:annotation>
+        <xs:documentation xml:lang="en"><![CDATA[
+A short description for security scheme.
+        ]]></xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="restSecurityBasicAuth">
+    <xs:complexContent>
+      <xs:extension base="tns:restSecurityDefinition">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="restSecurityOAuth2">
+    <xs:complexContent>
+      <xs:extension base="tns:restSecurityDefinition">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="scopes" type="tns:restPropertyDefinition"/>
+        </xs:sequence>
+        <xs:attribute name="authorizationUrl" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+The authorization URL to be used for this flow. This SHOULD be in the form of a
+URL. Required for implicit and access code flows
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="tokenUrl" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+The token URL to be used for this flow. This SHOULD be in the form of a URL.
+Required for password, application, and access code flows.
+            ]]></xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="flow" type="xs:string">
+          <xs:annotation>
+            <xs:documentation xml:lang="en"><![CDATA[
+The flow used by the OAuth2 security scheme. Valid values are implicit,
+password, application or accessCode.
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11943,9 +13058,9 @@ Sets whether the object should automatically start when Camel starts. Important:
 Currently only routes can be disabled, as CamelContexts are always started.
 Note: When setting auto startup false on CamelContext then that takes precedence
 and no routes is started. You would need to start CamelContext explicit using
-the link org.apache.camel.CamelContextstart() method, to start the context, and
-then you would need to start the routes manually using link
-CamelContextstartRoute(String). Default value: true
+the org.apache.camel.CamelContext#start() method, to start the context, and then
+you would need to start the routes manually using
+CamelContext#startRoute(String). Default value: true
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -11977,7 +13092,7 @@ Set whether MDC is enabled.
         <xs:attribute name="useDataType" type="xs:string">
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
-Whether to enable using data type on Camel message. Data type are automatic
+Whether to enable using data type on Camel messages. Data type are automatic
 turned on if: one ore more routes has been explicit configured with input and
 output types when using rest-dsl with binding turned on Otherwise data type is
 default off.
@@ -11995,8 +13110,8 @@ Set whether breadcrumb is enabled. Default value: true
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets whether to allow access to the original message from Camel's error handler,
-or from link org.apache.camel.spi.UnitOfWorkgetOriginalInMessage(). Turning this
-off can optimize performance, as defensive copy of the original message is not
+or from org.apache.camel.spi.UnitOfWork#getOriginalInMessage(). Turning this off
+can optimize performance, as defensive copy of the original message is not
 needed.
             ]]></xs:documentation>
           </xs:annotation>
@@ -12020,11 +13135,11 @@ The naming pattern for creating the CamelContext management name. Default value:
           <xs:annotation>
             <xs:documentation xml:lang="en"><![CDATA[
 Sets the thread name pattern used for creating the full thread name. The default
-pattern is: Camel (camelId) thread counter - name Where camelId is the name of
-the org.apache.camel.CamelContext and counter is a unique incrementing counter.
-and name is the regular thread name. You can also use longName is the long
-thread name which can includes endpoint parameters etc. Default value: Camel
-(#camelId#) thread ##counter# - #name#
+pattern is: Camel (#camelId#) thread ##counter# - #name# Where #camelId# is the
+name of the org.apache.camel.CamelContext and #counter# is a unique incrementing
+counter. and #name# is the regular thread name. You can also use #longName# is
+the long thread name which can includes endpoint parameters etc. Default value:
+Camel (#camelId#) thread ##counter# - #name#
             ]]></xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -12067,8 +13182,8 @@ false, can speedup starting Camel. Default value: true
 Sets whether or not type converter statistics is enabled. By default the type
 converter utilization statistics is disabled. Notice: If enabled then there is a
 slight performance impact under very heavy load. You can enable/disable the
-statistics at runtime using the link
-org.apache.camel.spi.TypeConverterRegistrygetStatistics()setTypeConverterStatisticsEnabled(Boolean)
+statistics at runtime using the
+org.apache.camel.spi.TypeConverterRegistry#getStatistics()#setTypeConverterStatisticsEnabled(Boolean)
 method, or from JMX on the
 org.apache.camel.api.management.mbean.ManagedTypeConverterRegistryMBean mbean.
 Default value: false
@@ -12393,62 +13508,62 @@ Sets a reference to a thread pool to be used by the error handler
 
   <xs:simpleType name="exchangePattern">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="RobustInOnly"/>
-      <xs:enumeration value="OutOnly"/>
       <xs:enumeration value="InOnly"/>
+      <xs:enumeration value="OutOptionalIn"/>
+      <xs:enumeration value="InOptionalOut"/>
       <xs:enumeration value="InOut"/>
       <xs:enumeration value="RobustOutOnly"/>
-      <xs:enumeration value="InOptionalOut"/>
-      <xs:enumeration value="OutOptionalIn"/>
+      <xs:enumeration value="OutOnly"/>
       <xs:enumeration value="OutIn"/>
+      <xs:enumeration value="RobustInOnly"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="loggingLevel">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="DEBUG"/>
+      <xs:enumeration value="WARN"/>
+      <xs:enumeration value="OFF"/>
       <xs:enumeration value="TRACE"/>
       <xs:enumeration value="INFO"/>
-      <xs:enumeration value="OFF"/>
+      <xs:enumeration value="DEBUG"/>
       <xs:enumeration value="ERROR"/>
-      <xs:enumeration value="WARN"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="threadPoolRejectedPolicy">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="DiscardOldest"/>
       <xs:enumeration value="Abort"/>
       <xs:enumeration value="CallerRuns"/>
-      <xs:enumeration value="DiscardOldest"/>
       <xs:enumeration value="Discard"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="claimCheckOperation">
     <xs:restriction base="xs:string">
+      <xs:enumeration value="Get"/>
+      <xs:enumeration value="Set"/>
       <xs:enumeration value="GetAndRemove"/>
       <xs:enumeration value="Pop"/>
-      <xs:enumeration value="Get"/>
       <xs:enumeration value="Push"/>
-      <xs:enumeration value="Set"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="bindyType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Fixed"/>
-      <xs:enumeration value="Csv"/>
       <xs:enumeration value="KeyValue"/>
+      <xs:enumeration value="Csv"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="jsonLibrary">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Jackson"/>
-      <xs:enumeration value="Johnzon"/>
-      <xs:enumeration value="Fastjson"/>
       <xs:enumeration value="Gson"/>
       <xs:enumeration value="XStream"/>
+      <xs:enumeration value="Johnzon"/>
+      <xs:enumeration value="Fastjson"/>
+      <xs:enumeration value="Jackson"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -12460,8 +13575,8 @@ Sets a reference to a thread pool to be used by the error handler
 
   <xs:simpleType name="yamlTypeFilterType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="regexp"/>
       <xs:enumeration value="type"/>
+      <xs:enumeration value="regexp"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -12474,26 +13589,26 @@ Sets a reference to a thread pool to be used by the error handler
 
   <xs:simpleType name="shutdownRoute">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Default"/>
       <xs:enumeration value="Defer"/>
+      <xs:enumeration value="Default"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="shutdownRunningTask">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="CompleteCurrentTaskOnly"/>
       <xs:enumeration value="CompleteAllTasks"/>
+      <xs:enumeration value="CompleteCurrentTaskOnly"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="sagaPropagation">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="REQUIRED"/>
-      <xs:enumeration value="MANDATORY"/>
-      <xs:enumeration value="REQUIRES_NEW"/>
-      <xs:enumeration value="NEVER"/>
-      <xs:enumeration value="SUPPORTS"/>
       <xs:enumeration value="NOT_SUPPORTED"/>
+      <xs:enumeration value="REQUIRES_NEW"/>
+      <xs:enumeration value="SUPPORTS"/>
+      <xs:enumeration value="MANDATORY"/>
+      <xs:enumeration value="REQUIRED"/>
+      <xs:enumeration value="NEVER"/>
     </xs:restriction>
   </xs:simpleType>
 
@@ -12507,56 +13622,56 @@ Sets a reference to a thread pool to be used by the error handler
   <xs:simpleType name="restParamType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="header"/>
-      <xs:enumeration value="query"/>
       <xs:enumeration value="body"/>
-      <xs:enumeration value="path"/>
       <xs:enumeration value="formData"/>
+      <xs:enumeration value="path"/>
+      <xs:enumeration value="query"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="collectionFormat">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="pipes"/>
-      <xs:enumeration value="ssv"/>
       <xs:enumeration value="tsv"/>
-      <xs:enumeration value="multi"/>
       <xs:enumeration value="csv"/>
+      <xs:enumeration value="pipes"/>
+      <xs:enumeration value="multi"/>
+      <xs:enumeration value="ssv"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="restBindingMode">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="json"/>
       <xs:enumeration value="json_xml"/>
-      <xs:enumeration value="off"/>
-      <xs:enumeration value="xml"/>
       <xs:enumeration value="auto"/>
+      <xs:enumeration value="xml"/>
+      <xs:enumeration value="off"/>
+      <xs:enumeration value="json"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="restHostNameResolver">
     <xs:restriction base="xs:string">
       <xs:enumeration value="allLocalIp"/>
-      <xs:enumeration value="localHostName"/>
       <xs:enumeration value="localIp"/>
+      <xs:enumeration value="localHostName"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="typeConverterExists">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Ignore"/>
-      <xs:enumeration value="Fail"/>
       <xs:enumeration value="Override"/>
+      <xs:enumeration value="Fail"/>
     </xs:restriction>
   </xs:simpleType>
 
   <xs:simpleType name="errorHandlerType">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="TransactionErrorHandler"/>
-      <xs:enumeration value="DeadLetterChannel"/>
       <xs:enumeration value="LoggingErrorHandler"/>
       <xs:enumeration value="DefaultErrorHandler"/>
       <xs:enumeration value="NoErrorHandler"/>
+      <xs:enumeration value="TransactionErrorHandler"/>
+      <xs:enumeration value="DeadLetterChannel"/>
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

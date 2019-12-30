@@ -1,0 +1,23 @@
+RULE trace doCommit entry
+CLASS org.springframework.jms.connection.JmsTransactionManager
+METHOD doCommit
+AT ENTRY
+IF true
+DO traceln("**** entering JmsTransactionManager#doCommit method!")
+ENDRULE
+
+RULE trace doRollback entry
+CLASS org.springframework.jms.connection.JmsTransactionManager
+METHOD doRollback
+AT ENTRY
+IF true
+DO traceln("**** entering JmsTransactionManager#doRollback method!")
+ENDRULE
+
+RULE trace session rollback entry
+INTERFACE javax.jms.Session
+METHOD rollback
+AT ENTRY
+IF true
+DO traceln("**** entering javax.jms.Session#rollback method!")
+ENDRULE

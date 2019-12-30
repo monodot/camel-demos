@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.camel.builder.xml.XPathBuilder.xpath;
+import static org.apache.camel.language.xpath.XPathBuilder.xpath;
 
 /**
  * Created by tdonohue on 24/04/2018.

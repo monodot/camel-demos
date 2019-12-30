@@ -12,8 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.camel.builder.xml.XPathBuilder.xpath;
-
 /**
  * Created by tdonohue on 16/05/2018.
  */

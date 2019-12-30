@@ -8,7 +8,6 @@ import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,8 +41,6 @@ public class SimpleUnmarshal extends CamelTestSupport {
 
         mockOutput.expectedMessageCount(1);
 
-        String csv = "James,Blake,London\nThomas,Myers,London";
-
         template.sendBody("direct:start", csvInput);
 
         assertMockEndpointsSatisfied();
@@ -55,7 +52,9 @@ public class SimpleUnmarshal extends CamelTestSupport {
     @Test
     public void testCsvJson() throws Exception {
         mockOutputJson.expectedMessageCount(1);
-        mockOutputJson.expectedBodiesReceived("{\"list\":{\"list\":[{\"string\":[\"James\",\"Blake\",\"London\"]},{\"string\":[\"Thomas\",\"Myers\",\"London\"]}]}}");
+
+        // Expect we'll receive an array containing 2 items, each of them being an array of 3 items
+        mockOutputJson.expectedBodiesReceived("[[\"James\",\"Blake\",\"London\"],[\"Thomas\",\"Myers\",\"London\"]]");
 
         template.sendBody("direct:csv-json", csvInput);
 

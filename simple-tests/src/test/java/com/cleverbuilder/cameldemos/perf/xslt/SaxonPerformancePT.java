@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by tdonohue on 25/04/2018.
  */
-public class SaxonPerformanceTest extends AbstractBigXmlTest {
+public class SaxonPerformancePT extends AbstractBigXmlTest {
 
     @EndpointInject(uri = "mock:output")
     MockEndpoint mockOutput;
@@ -24,7 +24,7 @@ public class SaxonPerformanceTest extends AbstractBigXmlTest {
 
         StopWatch watch = new StopWatch();
 
-        context.startRoute("testroute");
+        context.getRouteController().startRoute("testroute");
         assertMockEndpointsSatisfied(1, TimeUnit.MINUTES);
 
         System.out.println("duration: " + watch.taken() + "ms");
@@ -36,7 +36,7 @@ public class SaxonPerformanceTest extends AbstractBigXmlTest {
             public void configure() throws Exception {
                 from("file://target/bigfiles").id("testroute").noAutoStartup()
                         .log("Processing big file")
-                        .to("xslt:com/cleverbuilder/cameldemos/perf/xslt/transform2way.xslt?saxon=true")
+                        .to("xslt-saxon:com/cleverbuilder/cameldemos/perf/xslt/transform2way.xslt")
                         .log("File transformed")
                         .to("file:target/files/out/")
                         .to("mock:output");

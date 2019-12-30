@@ -1,12 +1,9 @@
 package com.cleverbuilder.cameldemos.perf.xslt;
 
 import org.apache.camel.EndpointInject;
-import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.util.StopWatch;
-import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -20,7 +17,7 @@ import java.util.concurrent.TimeUnit;
  * Run using:
  *
  * export MAVEN_OPTS="-Xmx1024m"
- * mvn clean test -Dtest=UnoptimisedTest -Dmemory=512
+ * mvn clean test -Dtest=UnoptimisedTestPT -Dmemory=512
  *
  * Results:
  * - At 100,000 records (~435MB) and 512M memory => FAIL! "java.lang.OutOfMemoryError: GC overhead limit exceeded"
@@ -28,7 +25,7 @@ import java.util.concurrent.TimeUnit;
  * - At 100,000 records and 768M memory => OK, duration: 26204ms
  * - At 50,000 records (~217MB) and 512M memory => OK, duration: 7948ms
  */
-public class UnoptimisedTest extends AbstractBigXmlTest {
+public class UnoptimisedTestPT extends AbstractBigXmlTest {
 
     @EndpointInject(uri = "mock:output")
     protected MockEndpoint mockEndpoint;
@@ -40,10 +37,10 @@ public class UnoptimisedTest extends AbstractBigXmlTest {
 
         StopWatch watch = new StopWatch();
 
-        context.startRoute("testroute");
+        context.getRouteController().startRoute("testroute");
         assertMockEndpointsSatisfied(1, TimeUnit.MINUTES);
 
-        System.out.println("duration: " + watch.stop() + "ms");
+        System.out.println("duration: " + watch.taken() + "ms");
     }
 
     @Override

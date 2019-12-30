@@ -3,29 +3,28 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
-    ">
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-3.0.0.xsd">
 
-  <bean id="processor"
-        class="com.cleverbuilder.cameldemos.spring.scenarios.dailytimer.PrintDocuments"/>
+    <bean id="processor"
+          class="com.cleverbuilder.cameldemos.spring.scenarios.dailytimer.PrintDocuments"/>
 
-  <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
 
-    <route>
-      <!--
-      This would be midnight every day:
-      <from uri="quartz2://mytimer?cron=0+0+0+*+*+?"/>
-      -->
-      <from uri="quartz2://mytimer?cron=0/2+*+*+*+*+?"/>
-      <setHeader headerName="printerName">
-        <constant/>
-      </setHeader>
-      <setHeader headerName="printDir">
-        <constant>C:\print_temp</constant>
-      </setHeader>
-      <bean ref="processor" method="printDocuments"/>
-    </route>
+        <route id="main-route">
+            <!--
+            This would be midnight every day:
+            quartz://mytimer?cron=0+0+0+*+*+?
+            -->
+            <from uri="quartz://mytimer?cron=0/2+*+*+*+*+?"/>
+            <setHeader name="printerName">
+                <constant>SomePrinterName</constant>
+            </setHeader>
+            <setHeader name="printDir">
+                <constant>C:\print_temp</constant>
+            </setHeader>
+            <bean ref="processor" method="printDocuments"/>
+        </route>
 
-  </camelContext>
+    </camelContext>
 
 </beans>

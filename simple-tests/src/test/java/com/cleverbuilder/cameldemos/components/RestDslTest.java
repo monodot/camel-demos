@@ -2,12 +2,11 @@ package com.cleverbuilder.cameldemos.components;
 
 import com.cleverbuilder.cameldemos.model.ResponseObject;
 import com.cleverbuilder.cameldemos.model.Student;
+import org.apache.camel.BindToRegistry;
 import org.apache.camel.Exchange;
-import org.apache.camel.ExchangePattern;
 import org.apache.camel.Processor;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
@@ -25,7 +24,10 @@ import java.util.Map;
 public class RestDslTest extends CamelTestSupport {
 
     private static final String COMPONENT = "jetty";
-    private static final String PRODUCER_COMPONENT = "jetty";
+    private static final String PRODUCER_COMPONENT = "http"; // Jetty is not a producer
+
+    @BindToRegistry("studentService")
+    StudentService studentService = new StudentService();
 
     @Override
     @Before
@@ -71,7 +73,7 @@ public class RestDslTest extends CamelTestSupport {
         });
 
         assertNotNull(response);
-        assertEquals("Thanks, Nigel!", response.getOut().getBody(String.class));
+        assertEquals("Thanks, Nigel!", response.getMessage().getBody(String.class));
     }
 
     @Test
@@ -88,7 +90,7 @@ public class RestDslTest extends CamelTestSupport {
 
         assertNotNull(response);
         assertEquals("Thanks!", response);
-        assertFileExists("target/output/customers");
+        assertFileExists("target/output/customers/customer.txt");
     }
 
     @Test
@@ -187,13 +189,6 @@ public class RestDslTest extends CamelTestSupport {
     }
 
     @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        JndiRegistry jndi = super.createRegistry();
-        jndi.bind("studentService", new StudentService());
-        return jndi;
-    }
-
-    @Override
     protected RoutesBuilder createRouteBuilder() throws Exception {
 
         return new RouteBuilder() {
@@ -224,12 +219,13 @@ public class RestDslTest extends CamelTestSupport {
                         .get()
                             .to("direct:get")
                         .post().route()
-                            .to("file:target/output/customers")
+                            .to("file:target/output/customers?fileName=customer.txt")
                             .setBody(constant("Thanks!"));
 
                 rest("/simplepost")
                         .bindingMode(RestBindingMode.off)
                         .post().route()
+                            .streamCaching()
                             .log("Body received was: ${body}")
                             .setBody(simple("Thanks, ${body}!"));
 
@@ -251,15 +247,16 @@ public class RestDslTest extends CamelTestSupport {
                             .to("bean:studentService?method=getStudents")
                             .log("Body is now ${body}")
                             .endRest()
-                        .post().type(Student.class).produces("application/json").route()
+                        .post().type(Student.class).outType(ResponseObject.class).route()
                             .log("Receiving a student - ${body.getFirstName()}")
                             .to("bean:studentService?method=addStudent")
                             .process(exchange -> {
                                 ResponseObject response = new ResponseObject();
                                 response.setStatus("OK");
                                 response.setAdded("yes");
-                                exchange.getIn().setBody(response);
-                            });
+                                exchange.getMessage().setBody(response);
+                            })
+                            .log("Body is now - ${body}");
 
                 from("direct:invoke-rest")
                         .setHeader("countryCode", constant("GB"))
@@ -268,7 +265,8 @@ public class RestDslTest extends CamelTestSupport {
                 from("direct:invoke-rest-post")
                         .to("rest:post:students?host=localhost:8080"
                                 + "&outType=com.cleverbuilder.cameldemos.model.ResponseObject")
-                        .log("Response status was ${body.status}");
+                        .to("log:mylogger?showAll=true")
+                        .log("Response was: ${body}");
 
 
 

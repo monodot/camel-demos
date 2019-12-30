@@ -2,11 +2,11 @@ package com.cleverbuilder.cameldemos.components;
 
 import com.cleverbuilder.cameldemos.model.ResponseObject;
 import com.cleverbuilder.cameldemos.model.Student;
+import org.apache.camel.BindToRegistry;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Before;
@@ -23,7 +23,10 @@ import java.util.Map;
 public class RestConsumerTest extends CamelTestSupport {
 
     private static final String COMPONENT = "jetty";
-    private static final String PRODUCER_COMPONENT = "jetty";
+    private static final String PRODUCER_COMPONENT = "undertow"; // Jetty is no longer a producer
+
+    @BindToRegistry("studentService")
+    StudentService studentService = new StudentService();
 
     @Override
     @Before
@@ -45,16 +48,8 @@ public class RestConsumerTest extends CamelTestSupport {
         });
 
         assertNotNull(response);
-        assertEquals("POST invoked!", response.getOut().getBody(String.class));
+        assertEquals("POST invoked!", response.getMessage().getBody(String.class));
 }
-
-
-    @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        JndiRegistry jndi = super.createRegistry();
-        jndi.bind("studentService", new StudentService());
-        return jndi;
-    }
 
     @Override
     protected RoutesBuilder createRouteBuilder() throws Exception {

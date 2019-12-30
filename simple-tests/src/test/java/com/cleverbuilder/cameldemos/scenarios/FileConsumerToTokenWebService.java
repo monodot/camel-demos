@@ -1,11 +1,11 @@
 package com.cleverbuilder.cameldemos.scenarios;
 
+import org.apache.camel.AggregationStrategy;
+import org.apache.camel.BindToRegistry;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.impl.JndiRegistry;
-import org.apache.camel.processor.aggregate.AggregationStrategy;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
 
@@ -20,6 +20,9 @@ public class FileConsumerToTokenWebService extends CamelTestSupport {
 
     @EndpointInject(uri = "mock:tokenService")
     protected MockEndpoint mockTokenService;
+
+    @BindToRegistry("myAggregationStrategy")
+    MyAggregationStrategy myAggregationStrategy = new MyAggregationStrategy();
 
     @Test
     public void processBigFile() throws Exception {
@@ -55,12 +58,19 @@ public class FileConsumerToTokenWebService extends CamelTestSupport {
 
     }
 
+/*
+    @Override
+    protected Registry createCamelRegistry() throws Exception {
+        return super.createCamelRegistry();
+    }
+
     @Override
     protected JndiRegistry createRegistry() throws Exception {
         JndiRegistry registry = super.createRegistry();
         registry.bind("myAggregationStrategy", new MyAggregationStrategy());
         return registry;
     }
+*/
 
     class MyAggregationStrategy implements AggregationStrategy {
 

@@ -3,21 +3,21 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-3.0.0.xsd
     ">
 
   <!-- Configures a simple, ephemeral in-memory database for storing message IDs -->
   <!-- This stores entries in a Map structure; single instance so no clustering support -->
   <!-- Cluster-aware alternatives include JdbcMessageIdRepository, JpaMessageIdRepository, InfinispanIdempotentRepository, etc. -->
   <bean id="inmemoryRepository"
-        class="org.apache.camel.processor.idempotent.MemoryIdempotentRepository"/>
+        class="org.apache.camel.support.processor.idempotent.MemoryIdempotentRepository"/>
 
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 
     <route>
       <from uri="direct:start"/>
-      <setHeader headerName="CompoundMessageKey">
+      <setHeader name="CompoundMessageKey">
         <simple>${header.X-MY-Source}-${header.X-MY-Destination}-${header.X-MY-Class}-${header.X-MY-SeqNo}</simple>
       </setHeader>
       <log message="Derived message key: ${header.CompoundMessageKey}"/>

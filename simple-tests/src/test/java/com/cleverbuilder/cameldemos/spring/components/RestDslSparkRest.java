@@ -1,7 +1,8 @@
 package com.cleverbuilder.cameldemos.spring.components;
 
-import org.apache.camel.*;
-import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+import org.apache.camel.ProducerTemplate;
 import org.apache.camel.test.junit4.TestSupport;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +38,7 @@ public class RestDslSparkRest extends TestSupport {
         });
 
         assertNotNull(response);
-        assertEquals("Thanks!", response.getOut().getBody(String.class));
+        assertEquals("Thanks!", response.getMessage().getBody(String.class));
     }
 
 }

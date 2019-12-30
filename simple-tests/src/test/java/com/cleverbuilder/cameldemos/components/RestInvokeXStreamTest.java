@@ -73,6 +73,7 @@ public class RestInvokeXStreamTest extends CamelTestSupport {
                 // Stand up a simple HTTP endpoint for testing
                 // This should receive the marshalled XML
                 from("jetty:http://localhost:8084/hello")
+                        .streamCaching() // This is required otherwise the initial request gets thrown away after it is read once.
                         .log("Received request! - ${body}")
                         .to("mock:output");
             }

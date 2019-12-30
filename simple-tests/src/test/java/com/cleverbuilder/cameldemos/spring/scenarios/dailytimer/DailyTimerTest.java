@@ -1,47 +1,37 @@
 package com.cleverbuilder.cameldemos.spring.scenarios.dailytimer;
 
-import com.cleverbuilder.cameldemos.spring.scenarios.errorhandler.Transformer;
-import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
-import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.AdviceWithRouteBuilder;
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.junit4.CamelTestSupport;
-import org.apache.camel.test.junit4.TestSupport;
-import org.junit.Before;
+import org.apache.camel.test.spring.CamelSpringTestSupport;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.concurrent.TimeUnit;
+public class DailyTimerTest extends CamelSpringTestSupport {
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
-public class DailyTimerTest extends TestSupport {
+    @EndpointInject(uri = "mock:output")
+    protected MockEndpoint mockOutput;
 
-  @Autowired
-  CamelContext context;
+    @Override
+    protected AbstractApplicationContext createApplicationContext() {
+        return new ClassPathXmlApplicationContext("com/cleverbuilder/cameldemos/spring/scenarios/dailytimer/DailyTimerTest-context.xml");
+    }
 
-  @EndpointInject(uri = "mock:output")
-  MockEndpoint mockOutput;
+    @Override
+    public boolean isUseAdviceWith() {
+        return true;
+    }
 
-  @Test
-  public void testRoute() throws Exception {
-    mockOutput.expectedMinimumMessageCount(2);
+    @Test
+    public void testRoute() throws Exception {
+        AdviceWithRouteBuilder.adviceWith(context, "main-route",
+                a -> a.weaveAddLast().to("mock:output")
+        );
+        context.start();
 
-    context.getRouteDefinitions().get(0).adviceWith(context,
-            new AdviceWithRouteBuilder() {
-              @Override
-              public void configure() throws Exception {
-                weaveAddLast().to("mock:output");
-              }
-            });
-
-    mockOutput.assertIsSatisfied();
-
-  }
+        mockOutput.expectedMinimumMessageCount(2);
+        mockOutput.assertIsSatisfied();
+    }
 
 }
