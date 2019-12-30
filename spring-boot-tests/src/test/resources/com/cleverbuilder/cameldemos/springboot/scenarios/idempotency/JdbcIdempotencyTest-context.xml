@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-3.0.0.xsd
+    ">
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route>
+            <from uri="direct:start"/>
+            <setHeader name="CompoundMessageKey">
+                <simple>${header.X-MY-Source}-${header.X-MY-Destination}-${header.X-MY-Class}-${header.X-MY-SeqNo}</simple>
+            </setHeader>
+            <log message="Derived message key: ${header.CompoundMessageKey}"/>
+
+            <idempotentConsumer messageIdRepositoryRef="jdbcMessageIdRepository">
+                <header>CompoundMessageKey</header>
+                <log message="Not a duplicate; I am processing this message"/>
+                <to uri="mock:process"/>
+            </idempotentConsumer>
+        </route>
+
+    </camelContext>
+
+</beans>

@@ -118,3 +118,7 @@ tags
 
 # Java/Maven
 target/
+
+
+derby.log
+

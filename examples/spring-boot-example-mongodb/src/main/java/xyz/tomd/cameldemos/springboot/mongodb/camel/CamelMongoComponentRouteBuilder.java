@@ -5,7 +5,7 @@ import com.mongodb.client.model.Updates;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.mongodb3.MongoDbConstants;
+import org.apache.camel.component.mongodb.MongoDbConstants;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.stereotype.Component;
