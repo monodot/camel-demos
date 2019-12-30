@@ -419,6 +419,14 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <id>travis</id>
+
+            <properties>
+                <tools.jar>${java.home}/lib/tools.jar</tools.jar>
+            </properties>
+        </profile>
     </profiles>
 
 </project>
