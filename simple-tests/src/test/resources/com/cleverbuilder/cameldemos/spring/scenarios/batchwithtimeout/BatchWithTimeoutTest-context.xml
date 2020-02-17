@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-3.0.0.xsd
+    ">
+
+    <bean id="loopExpressionBean" class="com.cleverbuilder.cameldemos.spring.scenarios.batchwithtimeout.LoopExpressionBean"/>
+
+    <bean id="myPool" class="java.util.concurrent.Executors"
+          factory-method="newFixedThreadPool">
+        <constructor-arg index="0" value="2"/>
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route id="loop-route">
+            <from uri="direct:start"/>
+
+            <setHeader name="BatchSize">
+                <constant>10</constant>
+            </setHeader>
+
+            <!-- Set a timeout 5 seconds into the future -->
+            <setHeader name="TimeoutTime">
+                <groovy>java.time.Instant.now().plusSeconds(5);</groovy>
+            </setHeader>
+
+            <to uri="log:mylogger?showHeaders=true"/>
+
+            <loop doWhile="true">
+                <method ref="loopExpressionBean" method="loopCondition"/>
+                <!--<simple resultType="java.lang.Boolean">${bean:loopExpressionBean?method=loopCondition}</simple>-->
+                <log message="Writing a log!"/>
+                <to uri="mock:loopy"/>
+                <delay asyncDelayed="false">
+                    <constant>3000</constant>
+                </delay>
+                <!-- At the end of the first iteration of the loop, CamelLoopIndex is set to 0. -->
+                <!-- Then it goes to 1, 2, 3, etc. -->
+            </loop>
+
+            <log message="I'm after the loop now"/>
+        </route>
+
+<!-- A commented-out example of using a Splitter with timeout
+        <route id="split-route">
+            <from uri="direct:start-split"/>
+            <transform>
+                <groovy>[ 'apples', 'oranges', 'bananas', 'eggs', 'pancakes', 'cakes', 'biscuits', 'cheeses', 'strawberries', 'avocadoes', 'potatoes' ]</groovy>
+            </transform>
+            <split timeout="5000" parallelProcessing="true" executorServiceRef="myPool">
+                <simple>${body}</simple>
+                <log message="I'm doing the shopping! Buying some ${body}...."/>
+                <delay asyncDelayed="false">
+                    <constant>2000</constant>
+                </delay>
+                <log message="...bought ${body}!"/>
+            </split>
+        </route>
+-->
+    </camelContext>
+
+</beans>
