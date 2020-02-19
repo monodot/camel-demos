@@ -1,7 +1,8 @@
-package com.cleverbuilder.cameldemos.restdsl.types;
+package xyz.tomd.cameldemos.springboot.restdsl.types;
 
 /**
- * Created by tdonohue on 07/03/2018.
+ * This is a POJO which defines a response format.
+ * This allows Camel to serialise the response into JSON, using the Jackson library.
  */
 public class PostRequestType {
 

@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos.restdsl;
+package xyz.tomd.cameldemos.springboot.restdsl;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,6 +11,7 @@ public class RestDslApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// TODO Assert that the context loads OK
 	}
 
 }

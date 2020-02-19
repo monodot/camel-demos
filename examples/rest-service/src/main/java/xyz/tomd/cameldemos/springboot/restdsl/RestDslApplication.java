@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos.restdsl;
+package xyz.tomd.cameldemos.springboot.restdsl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
