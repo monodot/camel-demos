@@ -24,6 +24,7 @@
         <module>spring-boot-example-multiple-contexts</module>
         <module>spring-boot-example-jolokia</module>
         <module>spring-boot-example-call-rest-service</module>
+        <module>rest-service</module>
     </modules>
 
 </project>
