@@ -1,4 +1,4 @@
-# spring-boot-example-rest-dsl
+# rest-service
 
 ![Apache Camel][camelver]
 
@@ -65,7 +65,7 @@ To run the app:
 
 Then, to test the REST service's GET operation - see how it returns a JSON object:
 
-    $ curl http://localhost:8080/services/api/\w
+    $ curl http://localhost:8080/services/api/
     {"message":"Hello, world!"}
 
 And to test the REST service's POST operation - see how it returns a JSON object:
