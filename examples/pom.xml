@@ -11,7 +11,7 @@
         <relativePath>../parent</relativePath>
     </parent>
 
-    <artifactId>spring-boot-examples</artifactId>
+    <artifactId>examples</artifactId>
     <name>Tom D :: Camel Demos :: Spring Boot Examples</name>
     <description>Example Spring Boot apps demonstrating Apache Camel functionality</description>
     <packaging>pom</packaging>
@@ -24,7 +24,8 @@
         <module>spring-boot-example-multiple-contexts</module>
         <module>spring-boot-example-jolokia</module>
         <module>spring-boot-example-call-rest-service</module>
-        <module>rest-service</module>
+
+        <module>spring-boot</module>
     </modules>
 
 </project>
