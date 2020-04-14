@@ -26,6 +26,7 @@
         <module>spring-boot-example-call-rest-service</module>
 
         <module>spring-boot</module>
+        <module>playgrounds</module>
     </modules>
 
 </project>
