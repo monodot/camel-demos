@@ -8,16 +8,24 @@ import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.spi.Registry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jms.connection.JmsTransactionManager;
 
 public class TransactedDefinitionTest extends CamelTestSupport {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(TransactedDefinitionTest.class);
+
+    /**
+     * This tries to test that a transacted definition is required.
+     */
     @Test
     public void withoutTransactedDefinition() throws Exception {
         context.addRoutes(new RouteBuilder() {
             @Override
             public void configure() throws Exception {
                 from("jetty:http://localhost:8084/hello")
+                        .transacted()
                         .to("jms:queue:HELLO.WORLD?exchangePattern=InOnly")
                         .to("file:target/output")
                         .throwException(new CamelException("An error did occur!"));
@@ -33,6 +41,7 @@ public class TransactedDefinitionTest extends CamelTestSupport {
         }
 
         // Assert that nothing arrives on the HELLO.WORLD queue (because an exception occurred later which should have caused the transaction to roll back)
+        LOGGER.info("Waiting to see if messages arrive on HELLO WORLD queue");
         Object message = consumer.receiveBody("jms:queue:HELLO.WORLD", 5000L);
         assertNull(message);
     }

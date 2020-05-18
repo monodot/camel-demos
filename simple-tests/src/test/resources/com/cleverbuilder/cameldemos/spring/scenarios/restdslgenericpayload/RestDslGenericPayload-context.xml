@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring-3.0.0.xsd
+    ">
+
+  <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+    <restConfiguration component="spark-rest"
+                       host="localhost"
+                       port="8080"/>
+
+    <rest path="/test">
+      <post produces="JSON">
+        <route>
+          <log message="Received a request with body ${body}"/>
+
+          <to uri="mock:test"/>
+          <unmarshal
+          <transform>
+            <simple>Bye</simple>
+          </transform>
+        </route>
+      </post>
+    </rest>
+
+  </camelContext>
+
+</beans>

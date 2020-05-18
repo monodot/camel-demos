@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring https://camel.apache.org/schema/spring/camel-spring.xsd
+    ">
+
+    <!-- Create an ActiveMQ componenty -->
+    <bean id="activemq" class="org.apache.camel.component.activemq.ActiveMQComponent">
+        <property name="brokerURL" value="vm://localhost?broker.persistent=false&amp;broker.useJmx=false&amp;jms.redeliveryPolicy.maximumRedeliveries=6&amp;jms.redeliveryPolicy.initialRedeliveryDelay=500&amp;jms.useAsyncSend=false&amp;jms.sendTimeout=10000"/>
+        <property name="transacted" value="true"/>
+    </bean>
+
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <!-- A route which tries to handle an exception thrown from another route -->
+
+        <route id="onexception-with-subroute">
+            <from uri="activemq:queue:onexception.withsubroute"/>
+
+            <!-- Set an onException here - but this won't apply to exceptions thrown from other routes -->
+            <onException>
+                <exception>java.lang.Exception</exception>
+                <handled>
+                    <constant>true</constant>
+                </handled>
+                <!-- If an exception happens, just log with WARN level -->
+                <log loggingLevel="WARN" message="Oh NO! Something went wrong....."/>
+                <to uri="log:mylogger?level=WARN&amp;showHeaders=true&amp;showProperties=true"/>
+            </onException>
+
+            <to uri="mock:withsubroute-observer"/> <!-- Pipe the exchange through a mock component so we can observe what's happening -->
+
+            <to uri="direct:throws-an-exception"/> <!-- This request will fail, unsurprisingly -->
+
+            <log message="Message sent successfully!"/> <!-- ...which means this line should never be reached -->
+            <to uri="mock:withsubroute-result"/>
+        </route>
+
+
+        <!-- This Direct route throws an exception -->
+        <route>
+            <from uri="direct:throws-an-exception"/>
+            <delay asyncDelayed="false">
+                <!-- Block for a second -->
+                <constant>1000</constant>
+            </delay>
+            <throwException exceptionType="java.io.IOException" message="I am throwing a BIG exception - handle me!"/>
+        </route>
+
+
+
+        <!-- Now a single route where a step within the route throws an exception -->
+
+        <route id="onexception-single-route">
+            <from uri="activemq:queue:onexception.singleroute"/>
+
+            <!-- Set an onException here - and this does apply to an exception thrown within this route -->
+            <onException>
+                <exception>java.lang.Exception</exception>
+                <handled>
+                    <constant>true</constant>
+                </handled>
+                <!-- If an exception happens, just log with WARN level -->
+                <log loggingLevel="WARN" message="Oh NO! Something went wrong....."/>
+                <to uri="log:mylogger?level=WARN&amp;showHeaders=true&amp;showProperties=true"/>
+            </onException>
+
+            <to uri="mock:singleroute-observer"/> <!-- Pipe the exchange through a mock component so we can observe what's happening -->
+
+            <throwException exceptionType="java.io.IOException" message="I am throwing a BIG exception - handle me!"/>
+
+            <log message="Message sent successfully!"/> <!-- This line should never be reached -->
+            <to uri="mock:singleroute-result"/> <!-- And this -->
+        </route>
+
+
+    </camelContext>
+
+</beans>

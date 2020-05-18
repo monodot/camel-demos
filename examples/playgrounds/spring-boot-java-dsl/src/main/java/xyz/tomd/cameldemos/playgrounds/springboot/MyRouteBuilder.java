@@ -16,6 +16,7 @@ public class MyRouteBuilder extends RouteBuilder {
     public void configure() throws Exception {
 
         restConfiguration()
+                .bindingMode(RestBindingMode.)
                 .component("servlet");
 
         rest()
