@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>spring-boot-examples</artifactId>
+        <artifactId>examples</artifactId>
         <groupId>xyz.tomd.demos.camel</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../</relativePath>

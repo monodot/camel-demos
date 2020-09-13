@@ -12,20 +12,21 @@ public class CamelCallRestRouteBuilder extends RouteBuilder {
         // So I'm using a Timer, which is triggered only once.
         // In your application, you might use a different component
         // at the start of the route, such as a File component or Direct component.
-        // This route will first get the current GitHub user, and then add a Star
+        // This route will get the current GitHub user, and then star a repo
         from("timer:mytimer?repeatCount=1")
-                .to("direct:getuser")
-                .to("direct:addstar");
+                .to("direct:get-user")
+                .to("direct:create-gist");
 
 
         // GET USER
 
-        from("direct:getuser")
+        from("direct:get-user")
+                .log("Getting user info from GitHub...")
                 // Set the body to null, as we're not posting anything to this API
                 .setBody(simple("${null}"))
 
                 // First let's just get the current user's info
-                .to("http://api.github.com/user" +
+                .to("https://api.github.com/user" +
                         "?httpMethod=GET" +
                         "&authMethod=Basic" +
                         "&authUsername={{github.username}}" +
@@ -37,33 +38,28 @@ public class CamelCallRestRouteBuilder extends RouteBuilder {
 
         // ADD STAR
 
-        from("direct:addstar")
-
-                // Set up some parameters for our HTTP request
-                .setHeader("repoOwner", constant("apache"))
-                .setHeader("repoName", constant("camel"))
-
-                // You could also set some query parameters here, if needed.
-                //.setHeader(Exchange.HTTP_QUERY, constant("hello=true"))
+        from("direct:create-gist")
+                .log("Creating a Gist on GitHub...")
 
                 // Set the body to null, because it is required by the GitHub API.
                 // But you can set the body here to anything you like.
-                .setBody(simple("${null}"))
 
-                // Now invoke the GitHub API with the null Body
-                // PUT /user/starred/:owner/:repo
+                // This is the content of our Gist.
+                // See: https://docs.github.com/en/rest/reference/gists#create-a-gist
+                .transform(simple("{\"files\":{\"README.md\":{\"content\":\"Hello from Camel!\"}}}"))
+
+                // Now invoke the GitHub API with the Gist JSON in the body
+                // POST /gists
                 // See: https://developer.github.com/v3/activity/starring/#star-a-repository
-                // I'm using the 'toD' EIP, so that I can build the URL dynamically,
-                // using the values of my repoOwner and repoName headers.
-                // See: https://camel.apache.org/manual/latest/toD-eip.html
-                .toD("https://api.github.com/user/starred/${header.repoOwner}/${header.repoName}" +
-                        "?httpMethod=PUT" +
+                .to("https://api.github.com/gists" +
+                        "?httpMethod=POST" +
                         "&authMethod=Basic" +
                         "&authUsername={{github.username}}" +
                         "&authPassword={{github.token}}" +
                         "&authenticationPreemptive=true")
 
-                .log("Response code from the Add Star operation was: ${header.CamelHttpResponseCode}");
+                .log("Response code from the Create Gist operation was: ${header.CamelHttpResponseCode}")
+                .log("Response body from the Create Gist operation was: ${body}");
 
 
     }

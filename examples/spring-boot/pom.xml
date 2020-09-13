@@ -18,7 +18,11 @@
 
     <modules>
         <module>activemq-artemis</module>
+        <module>call-rest-service</module>
+        <module>database-transaction</module>
+        <module>file-upload</module>
         <module>rest-service</module>
+        <module>jolokia</module>
     </modules>
 
 </project>

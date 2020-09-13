@@ -18,15 +18,12 @@
 
     <modules>
         <module>spring-boot-example-xml-cxf-path-root</module>
-        <module>spring-boot-example-file-upload</module>
         <module>spring-boot-example-mongodb</module>
-        <module>spring-boot-example-database-tx</module>
         <module>spring-boot-example-multiple-contexts</module>
-        <module>spring-boot-example-jolokia</module>
-        <module>spring-boot-example-call-rest-service</module>
 
         <module>spring-boot</module>
         <module>playgrounds</module>
+<!--        <module>spring-boot-example-mutual-tls</module>-->
     </modules>
 
 </project>
