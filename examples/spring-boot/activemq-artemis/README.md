@@ -41,3 +41,15 @@ public JmsComponent jmsComponent() throws JMSException {
     return jms;
 }
 ```
+
+## Running an integration test
+
+This example has an **integration test** for you to use. It uses [Testcontainers][1] to run a containerised test instance of ActiveMQ Artemis, configures Camel to talk to the test instance, and then verifies that a message arrives in a queue on the broker.
+
+See the [CamelArtemisApplicationIT class](./src/test/java/xyz/tomd/cameldemos/springboot/artemis/CamelArtemisApplicationIT.java). 
+
+**Ensure you have Docker installed**, then run the test using:
+
+    mvn clean test -Dtest=CamelArtemisApplicationIT
+
+[1]: https://www.testcontainers.org/
