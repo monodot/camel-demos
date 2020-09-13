@@ -10,12 +10,13 @@ public class CamelArtemisRouteBuilder extends RouteBuilder {
 
         // Send a message to a queue every 5 seconds
         from("timer:mytimer?period=5000")
-                .setBody(constant("HELLO from Camel!"))
-                .to("jms:queue:HELLO.WORLD");
+                .transform(constant("HELLO from Camel!"))
+                .to("jms:queue:INCOMING");
 
-        // Receive a message from a queue
-        from("jms:queue:HELLO.WORLD")
-                .log("Received a message - ${body}");
+        // Receive the message from the queue and send it to another queue
+        from("jms:queue:INCOMING")
+                .log("Received a message - ${body} - sending to outbound queue")
+                .to("jms:queue:PROCESSED?exchangePattern=InOnly");
 
     }
 }
