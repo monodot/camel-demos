@@ -41,6 +41,11 @@
             <artifactId>camel-sql</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-jms-starter</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Testing -->
         <dependency>

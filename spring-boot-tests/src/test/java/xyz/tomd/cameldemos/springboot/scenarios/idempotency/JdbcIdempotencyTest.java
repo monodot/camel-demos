@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos.springboot.scenarios.idempotency;
+package xyz.tomd.cameldemos.springboot.scenarios.idempotency;
 
 import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +33,7 @@ public class JdbcIdempotencyTest {
     @Autowired
     ProducerTemplate template;
 
-    @EndpointInject(uri = "mock:process")
+    @EndpointInject("mock:process")
     MockEndpoint mockEndpoint;
 
     @Autowired
