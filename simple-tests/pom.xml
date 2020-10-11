@@ -95,11 +95,6 @@
             <artifactId>camel-activemq</artifactId>
         </dependency>
 
-        <!-- For REST -->
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-spark-rest</artifactId>
-        </dependency>
         <!-- Required to use jetty as a component with REST DSL -->
         <dependency>
             <groupId>org.apache.camel</groupId>
@@ -256,13 +251,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.camel</groupId>
+            <groupId>org.apache.camel.karaf</groupId>
             <artifactId>camel-test-blueprint</artifactId>
+            <version>${camel.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>

@@ -15,8 +15,10 @@ public class MyRouteBuilder extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
+        // I've got my nice Camel REST service here...
+        // Using the servlet component.
         restConfiguration()
-                .bindingMode(RestBindingMode.)
+                .bindingMode(RestBindingMode.auto)
                 .component("servlet");
 
         rest()

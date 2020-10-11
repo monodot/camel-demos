@@ -8,7 +8,7 @@
 
   <camelContext xmlns="http://camel.apache.org/schema/spring">
 
-    <restConfiguration component="spark-rest"
+    <restConfiguration component="servlet"
                        host="localhost"
                        port="8080"/>
 
@@ -18,7 +18,6 @@
           <log message="Received a request with body ${body}"/>
 
           <to uri="mock:test"/>
-          <unmarshal
           <transform>
             <simple>Bye</simple>
           </transform>

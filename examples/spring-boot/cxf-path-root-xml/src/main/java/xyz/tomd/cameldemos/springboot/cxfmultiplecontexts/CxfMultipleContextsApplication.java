@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos.springboot.cxfmultiplecontexts;
+package xyz.tomd.cameldemos.springboot.cxfmultiplecontexts;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

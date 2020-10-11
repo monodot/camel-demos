@@ -50,7 +50,6 @@ public class CamelCallRestRouteBuilder extends RouteBuilder {
 
                 // Now invoke the GitHub API with the Gist JSON in the body
                 // POST /gists
-                // See: https://developer.github.com/v3/activity/starring/#star-a-repository
                 .to("https://api.github.com/gists" +
                         "?httpMethod=POST" +
                         "&authMethod=Basic" +

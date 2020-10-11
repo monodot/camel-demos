@@ -4,7 +4,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
-import org.apache.camel.impl.JndiRegistry;
+import org.apache.camel.spi.Registry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.jboss.byteman.contrib.bmunit.BMScript;
 import org.jboss.byteman.contrib.bmunit.BMUnitConfig;
@@ -91,11 +91,8 @@ public class JmsComponentWithTxManagerBMTest extends CamelTestSupport {
 
     }
 
-
     @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        JndiRegistry registry = super.createRegistry();
-
+    protected void bindToRegistry(Registry registry) throws Exception {
         // Create an embedded ActiveMQ broker
         ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory();
         activeMQConnectionFactory.setBrokerURL("vm://localhost?" +
@@ -121,8 +118,6 @@ public class JmsComponentWithTxManagerBMTest extends CamelTestSupport {
         // Need to add the transaction manager into the registry,
         // otherwise we'll get: "No bean could be found in the registry of type: PlatformTransactionManager"
         registry.bind("transactionManager", transactionManager);
-
-        return registry;
     }
 
 }

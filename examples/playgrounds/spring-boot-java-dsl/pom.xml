@@ -46,6 +46,12 @@
 			<artifactId>camel-spring-boot-starter</artifactId>
 		</dependency>
 
+		<!-- Add the Spring Security starter dependency .... -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!-- When using the REST DSL, Camel will look for org.apache.camel.spi.RestConsumerFactory on the classpath.
 		By using Camel's servlet-starter, we can configure the embedded servlet container to act as a RestConsumerFactory -->
 		<!-- See: https://camel.apache.org/components/latest/servlet-component.html#_usage_with_spring_boot -->

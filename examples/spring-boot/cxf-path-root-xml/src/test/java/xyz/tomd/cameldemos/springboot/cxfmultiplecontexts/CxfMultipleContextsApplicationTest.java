@@ -1,4 +1,4 @@
-package com.cleverbuilder.cameldemos.springboot.cxfmultiplecontexts;
+package xyz.tomd.cameldemos.springboot.cxfmultiplecontexts;
 
 import com.cleverbuilder.bookservice.BookService;
 import com.cleverbuilder.bookservice.GetAllBooks;
