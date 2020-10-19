@@ -94,6 +94,7 @@ public class SimpleCbr extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 from("file:directory/files/input")
+                        .to("log:mylogger?showHeaders=true&showBody=true")
                         .choice()
                             .when(simple("${body} == 'Hello, world!'"))
                         .to("mock:helloworld")
