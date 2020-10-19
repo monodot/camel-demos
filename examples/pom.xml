@@ -17,10 +17,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>spring-boot-example-xml-cxf-path-root</module>
-        <module>spring-boot-example-mongodb</module>
-        <module>spring-boot-example-multiple-contexts</module>
-
         <module>spring-boot</module>
         <module>playgrounds</module>
 <!--        <module>spring-boot-example-mutual-tls</module>-->

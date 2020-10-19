@@ -1,6 +1,6 @@
 package xyz.tomd.cameldemos.springboot.mongodb;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
@@ -59,7 +59,7 @@ public class CamelMongoDbApplicationIT {
         MongoDatabase db = mongoClient.getDatabase(mongoDatabaseName);
         catsCollection = db.getCollection(mongoCollectionName);
         catsCollection.drop();
-        LOG.info("**** Cats collection dropped - size is now: " + catsCollection.count());
+        LOG.info("**** Cats collection dropped - size is now: " + catsCollection.countDocuments());
     }
 
     @Test

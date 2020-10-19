@@ -1,7 +1,7 @@
 package xyz.tomd.cameldemos.springboot.mongodb;
 
-import com.mongodb.MongoClient;
-import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +23,10 @@ public class CamelMongoDbApplication {
         // Camel 2.21.0 uses mongo driver 3.4 which does NOT include POJO support.
         // From 3.6 onwards, set up a CodecRegistry - this allows us to use POJOs with the Mongo driver
         // There is no MongoClient(host, port, MongoClientOptions) constructor, so we use MongoClient(ServerAddress addr, MongoClientOptions options)
-        MongoClient client = new MongoClient(properties.getHost(), properties.getPort());
+        MongoClient client = MongoClients.create(
+                "mongodb://" + properties.getHost()
+                        + ":" + properties.getPort());
+//        MongoClient client = new MongoClient(properties.getHost(), properties.getPort());
         return client;
     }
 

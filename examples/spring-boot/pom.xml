@@ -19,10 +19,13 @@
     <modules>
         <module>activemq-artemis</module>
         <module>call-rest-service</module>
+        <module>cxf-path-root-xml</module>
         <module>database-transaction</module>
         <module>file-upload</module>
         <module>rest-service</module>
         <module>jolokia</module>
+        <module>multiple-contexts</module>
+        <module>mongodb</module>
     </modules>
 
 </project>

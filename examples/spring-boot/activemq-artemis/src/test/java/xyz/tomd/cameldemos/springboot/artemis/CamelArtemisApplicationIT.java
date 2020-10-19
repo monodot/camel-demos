@@ -3,6 +3,7 @@ package xyz.tomd.cameldemos.springboot.artemis;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnection;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.camel.test.spring.CamelSpringBootRunner;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import javax.naming.NamingException;
         "spring.artemis.user = jazz",
         "spring.artemis.password = hands"
 })
+@Ignore
 public class CamelArtemisApplicationIT {
 
     private static final Logger LOG = LoggerFactory.getLogger(CamelArtemisApplicationIT.class);
