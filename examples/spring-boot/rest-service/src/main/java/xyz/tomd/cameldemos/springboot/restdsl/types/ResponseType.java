@@ -4,6 +4,9 @@ public class ResponseType {
 
     private String message;
 
+    public ResponseType() {
+    }
+
     public ResponseType(String message) {
         this.message = message;
     }
