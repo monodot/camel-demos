@@ -13,6 +13,10 @@ See also my book, [Camel Step-by-Step: A beginner's guide to Apache Camel][camel
 
 Thanks, Tom.
 
+## Troubleshooting
+
+If you get strange missing class errors, make sure you're compiling with the latest parent POM: `mvn clean install -f parent/pom.xml`.
+
 ## In this repo
 
 - **simple-tests** - Quick demos of Camel functionality implemented using Camel's test framework. Lift and shift the Camel route definitions into your own applications!
