@@ -398,11 +398,13 @@
         <profile>
             <id>with-tools-jar</id>
 
+            <!--
             <activation>
                 <file>
                     <exists>${java.home}/../lib/tools.jar</exists>
                 </file>
             </activation>
+            -->
 
             <properties>
                 <tools.jar>${java.home}/../lib/tools.jar</tools.jar>
