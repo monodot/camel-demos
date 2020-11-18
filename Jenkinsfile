@@ -70,7 +70,8 @@ pipeline {
     stage('Unit Test'){
       steps {
         // sh "mvn -B test -f ${POM_FILE}"
-        sh "mvn -B clean test -Dtest=InvokeSoapServiceRouteBuilderTest -f simple-tests/pom.xml"
+        // sh "mvn -B clean test -Dtest=InvokeSoapServiceRouteBuilderTest -f simple-tests/pom.xml"
+        sh "mvn -B clean test -f simple-tests/pom.xml"
       }
       post {
         always {
