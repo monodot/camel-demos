@@ -4,11 +4,13 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.BindToRegistry;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class ComponentTest extends CamelTestSupport {
 
     @Test
+    @Ignore
     public void name() throws Exception {
         context.addRoutes(new RouteBuilder() {
             @Override
