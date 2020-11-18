@@ -50,18 +50,20 @@ pipeline {
         //hygieiaBuildPublishStep buildStatus: 'InProgress'
         sh "mvn clean install -DskipTests=true -f ${POM_FILE}"
       }
+      /*
       post {
         failure {
-          //hygieiaBuildPublishStep buildStatus: 'Failure'
+          hygieiaBuildPublishStep buildStatus: 'Failure'
         }
         aborted {
-          //hygieiaBuildPublishStep buildStatus: 'Aborted'
+          hygieiaBuildPublishStep buildStatus: 'Aborted'
         }
         success {
-          //hygieiaBuildPublishStep buildStatus: 'Success'
-          //hygieiaArtifactPublishStep artifactDirectory: './target/', artifactGroup: 'org.test', artifactName: "shift-rest-0.1.0.jar", artifactVersion: "${env.version}"
+          hygieiaBuildPublishStep buildStatus: 'Success'
+          hygieiaArtifactPublishStep artifactDirectory: './target/', artifactGroup: 'org.test', artifactName: "shift-rest-0.1.0.jar", artifactVersion: "${env.version}"
         }
       }
+      */
     }
 
     // Run Maven unit tests
