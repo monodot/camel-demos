@@ -45,11 +45,11 @@ pipeline {
     }
 
     // Run Maven build, skipping tests
-    stage('Build'){
-      steps {
+    // stage('Build'){
+      // steps {
         //hygieiaBuildPublishStep buildStatus: 'InProgress'
-        sh "mvn -B clean install -DskipTests=true -f ${POM_FILE}"
-      }
+        // sh "mvn -B clean install -DskipTests=true -f ${POM_FILE}"
+      // }
       /*
       post {
         failure {
@@ -64,16 +64,18 @@ pipeline {
         }
       }
       */
-    }
+    // }
 
     // Run Maven unit tests
     stage('Unit Test'){
       steps {
-        sh "mvn test -f ${POM_FILE}"
+        // sh "mvn -B test -f ${POM_FILE}"
+        sh "mvn -B clean test -Dtest=InvokeSoapServiceRouteBuilderTest -f simple-tests/pom.xml"
       }
       post {
         always {
-            junit 'build/reports/**/*.xml'
+            junit '/tmp/workspace/camel-demos/simple-tests/target/surefire-reports/**/*.xml'
+            // junit 'build/reports/**/*.xml'
         }
       }
     }
