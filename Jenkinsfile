@@ -72,6 +72,12 @@ pipeline {
         sh "mvn test -f ${POM_FILE}"
       }
     }
+
+    post {
+      always {
+          junit 'build/reports/**/*.xml'
+      }
+    }
   }
 }
 
