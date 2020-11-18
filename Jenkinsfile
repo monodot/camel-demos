@@ -48,7 +48,7 @@ pipeline {
     stage('Build'){
       steps {
         //hygieiaBuildPublishStep buildStatus: 'InProgress'
-        sh "mvn clean install -DskipTests=true -f ${POM_FILE}"
+        sh "mvn -B clean install -DskipTests=true -f ${POM_FILE}"
       }
       /*
       post {
@@ -71,13 +71,13 @@ pipeline {
       steps {
         sh "mvn test -f ${POM_FILE}"
       }
-    }
-
-    post {
-      always {
-          junit 'build/reports/**/*.xml'
+      post {
+        always {
+            junit 'build/reports/**/*.xml'
+        }
       }
     }
+
   }
 }
 
