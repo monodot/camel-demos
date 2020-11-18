@@ -74,7 +74,8 @@ pipeline {
       }
       post {
         always {
-            junit '/tmp/workspace/camel-demos/simple-tests/target/surefire-reports/**/*.xml'
+            junit 'simple-tests/target/surefire-reports/**/*.xml'
+            // junit '/tmp/workspace/camel-demos/simple-tests/target/surefire-reports/**/*.xml'
             // junit 'build/reports/**/*.xml'
         }
       }
