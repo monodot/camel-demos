@@ -30,11 +30,12 @@ public class InvokeSoapServiceRouteBuilderTest extends CamelTestSupport {
         endpoint.stop();
     }
 
-    @EndpointInject(uri = "mock:output")
-    MockEndpoint mockOutput;
+//    @EndpointInject(uri = "mock:output")
+//    MockEndpoint mockOutput;
 
     @Test
     public void testInvokeSoapService() throws Exception {
+        MockEndpoint mockOutput = getMockEndpoint("mock:output");
         mockOutput.expectedMessageCount(1);
 
         template.sendBody("direct:start", null);
