@@ -39,7 +39,7 @@
 
         <camel.version>3.4.2</camel.version>
         <spring-boot.version>2.3.1.RELEASE</spring-boot.version>
-        <cxf.version>3.3.6</cxf.version>
+        <cxf.version>3.6.2</cxf.version>
 
         <hapi.version>2.3</hapi.version>
 
