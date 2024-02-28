@@ -19,7 +19,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <memory>512</memory>
-        <commons-lang.version>3.7</commons-lang.version>
+        <commons-lang.version>3.14.0</commons-lang.version>
 
         <byteman.version>4.0.8</byteman.version>
         <!-- Required by the `byteman` profile when running under Java 1.8; you should replace this property with your local path to tools.jar -->
