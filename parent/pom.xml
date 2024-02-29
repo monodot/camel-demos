@@ -43,7 +43,7 @@
 
         <hapi.version>2.3</hapi.version>
 
-        <hawtio.version>2.8.0</hawtio.version>
+        <hawtio.version>2.17.7</hawtio.version>
 
 
     </properties>
